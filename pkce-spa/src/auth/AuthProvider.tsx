@@ -3,18 +3,22 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useMemo,
   useState,
   type ReactNode,
 } from 'react';
-import type { User, UserManager } from 'oidc-client-ts';
 
-import { getUserManager, isOidcConfigured } from './oidc';
+import {
+  getStoredSession,
+  isOidcConfigured,
+  revokeAndClearSession,
+  startSignInRedirect,
+  type AuthSession,
+} from './oidc';
 
 type AuthValue = {
-  user: User | null;
+  user: AuthSession | null;
   isLoading: boolean;
-  /** Re-reads the session from the UserManager (e.g. after `signinRedirectCallback`). */
+  /** Re-reads the session from storage (e.g. after `completeSignInFromCurrentUrl`). */
   refreshUser: () => Promise<void>;
   signIn: () => Promise<void>;
   signOut: () => Promise<void>;
@@ -25,103 +29,49 @@ type AuthValue = {
 const AuthContext = createContext<AuthValue | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<AuthSession | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const configured = isOidcConfigured();
-  const manager = useMemo(
-    () => (configured ? getUserManager() : null),
-    [configured],
-  );
 
-  const loadUser = useCallback(async (um: UserManager) => {
-    const u = await um.getUser();
-    setUser(u);
+  const loadUser = useCallback(() => {
+    setUser(getStoredSession());
   }, []);
 
-  // Keep React state in sync when UserManager updates storage (e.g. sign-out calls removeUser).
   useEffect(() => {
-    if (!manager) {
-      return;
-    }
-    const unsubLoad = manager.events.addUserLoaded((u) => {
-      setUser(u);
-    });
-    const unsubUnload = manager.events.addUserUnloaded(() => {
-      setUser(null);
-    });
-    return () => {
-      unsubLoad();
-      unsubUnload();
-    };
-  }, [manager]);
-
-  useEffect(() => {
-    if (!manager) {
+    if (!configured) {
       setIsLoading(false);
       return;
     }
-    let cancelled = false;
-    (async () => {
-      try {
-        if (!cancelled) {
-          await loadUser(manager);
-        }
-      } catch (e) {
-        if (!cancelled) {
-          setError(e instanceof Error ? e.message : 'Failed to load session');
-        }
-      } finally {
-        if (!cancelled) {
-          setIsLoading(false);
-        }
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [manager, loadUser]);
+    loadUser();
+    setIsLoading(false);
+  }, [configured, loadUser]);
 
   const refreshUser = useCallback(async () => {
-    if (!manager) {
-      return;
-    }
     setError(null);
-    try {
-      await loadUser(manager);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to load session');
-    }
-  }, [manager, loadUser]);
+    loadUser();
+  }, [loadUser]);
 
   const signIn = useCallback(async () => {
-    if (!manager) {
+    if (!configured) {
       return;
     }
     setError(null);
-    await manager.signinRedirect();
-  }, [manager]);
+    await startSignInRedirect();
+  }, [configured]);
 
   const signOut = useCallback(async () => {
-    if (!manager) {
+    if (!configured) {
       return;
     }
     setError(null);
-    // Update UI immediately; UserManager will also fire userUnloaded when storage clears
     setUser(null);
     try {
-      // Redirects to Google (or) ends session, then may return to post_logout_redirect_uri
-      await manager.signoutRedirect();
+      await revokeAndClearSession();
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Sign out failed');
-      // Storage may be cleared already or not — sync with UserManager
-      try {
-        await loadUser(manager);
-      } catch {
-        // ignore
-      }
     }
-  }, [manager, loadUser]);
+  }, [configured]);
 
   const value: AuthValue = {
     user,

@@ -1,21 +1,15 @@
-import type { User } from 'oidc-client-ts';
-
+import type { AuthSession } from '../auth/oidc';
 import { useAuth } from '../auth/AuthProvider';
 
-function formatProfileName(user: User) {
-  const p = user.profile;
-  if (p && typeof p === 'object') {
-    if ('email' in p && typeof p['email'] === 'string' && p['email']) {
-      return p['email'];
-    }
-    if ('name' in p && typeof p['name'] === 'string' && p['name']) {
-      return p['name'];
-    }
+function formatProfileName(session: AuthSession) {
+  const p = session.profile;
+  if (p.email) {
+    return p.email;
   }
-  if (p && typeof p === 'object' && 'sub' in p && typeof p['sub'] === 'string') {
-    return p['sub'];
+  if (p.name) {
+    return p.name;
   }
-  return 'Signed in';
+  return p.sub || 'Signed in';
 }
 
 export function HomePage() {

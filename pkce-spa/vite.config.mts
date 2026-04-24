@@ -10,10 +10,13 @@ export default defineConfig(() => ({
   server: {
     port: 4201,
     host: 'localhost',
+    /** OAuth redirect URIs must match Google Cloud exactly — do not auto-increment when busy. */
+    strictPort: true,
   },
   preview: {
     port: 4201,
     host: 'localhost',
+    strictPort: true,
   },
   plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   // Uncomment this if you are using workers.

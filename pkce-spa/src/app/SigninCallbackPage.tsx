@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../auth/AuthProvider';
-import { getUserManager, isOidcConfigured } from '../auth/oidc';
+import {
+  completeSignInFromCurrentUrl,
+  isOidcConfigured,
+} from '../auth/oidc';
 
 export function SigninCallbackPage() {
   const navigate = useNavigate();
@@ -17,9 +20,7 @@ export function SigninCallbackPage() {
     let cancelled = false;
     (async () => {
       try {
-        const manager = getUserManager();
-        await manager.signinRedirectCallback();
-        // Session is stored by the client; re-fetch so AuthContext gets `user` before we navigate
+        await completeSignInFromCurrentUrl();
         await refreshUser();
         if (!cancelled) {
           navigate('/', { replace: true });

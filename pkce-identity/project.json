@@ -1,0 +1,9 @@
+{
+  "name": "pkce-identity",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkce-identity/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project pkce-identity --web",
+  "targets": {}
+}

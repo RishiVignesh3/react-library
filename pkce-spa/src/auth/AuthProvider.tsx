@@ -8,6 +8,7 @@ import {
 } from 'react';
 
 import {
+  AUTH_SESSION_STORAGE_KEY,
   getStoredSession,
   isOidcConfigured,
   revokeAndClearSession,
@@ -45,6 +46,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
     loadUser();
     setIsLoading(false);
+  }, [configured, loadUser]);
+
+  useEffect(() => {
+    if (!configured || typeof window === 'undefined') {
+      return;
+    }
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== AUTH_SESSION_STORAGE_KEY && e.key !== null) {
+        return;
+      }
+      loadUser();
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
   }, [configured, loadUser]);
 
   const refreshUser = useCallback(async () => {

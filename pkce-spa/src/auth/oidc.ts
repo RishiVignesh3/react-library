@@ -4,7 +4,8 @@ import {
   createPkcePair,
 } from '@org/pkce-identity';
 
-const STORAGE_SESSION = 'pkce-spa:session';
+/** Shared across tabs (see `storage` listener in AuthProvider). */
+export const AUTH_SESSION_STORAGE_KEY = 'pkce-spa:session';
 const STORAGE_PENDING = 'pkce-spa:pkce-pending';
 
 /** Google OAuth 2.0 / OIDC (authorization code + PKCE). */
@@ -59,20 +60,28 @@ function clientSecret(): string | undefined {
 }
 
 export function getStoredSession(): AuthSession | null {
-  const raw = sessionStorage.getItem(STORAGE_SESSION);
+  let raw = localStorage.getItem(AUTH_SESSION_STORAGE_KEY);
+  if (!raw) {
+    const legacy = sessionStorage.getItem(AUTH_SESSION_STORAGE_KEY);
+    if (legacy) {
+      sessionStorage.removeItem(AUTH_SESSION_STORAGE_KEY);
+      localStorage.setItem(AUTH_SESSION_STORAGE_KEY, legacy);
+      raw = legacy;
+    }
+  }
   if (!raw) {
     return null;
   }
   try {
     return JSON.parse(raw) as AuthSession;
   } catch {
-    sessionStorage.removeItem(STORAGE_SESSION);
+    localStorage.removeItem(AUTH_SESSION_STORAGE_KEY);
     return null;
   }
 }
 
 export function clearStoredSession(): void {
-  sessionStorage.removeItem(STORAGE_SESSION);
+  localStorage.removeItem(AUTH_SESSION_STORAGE_KEY);
 }
 
 /**
@@ -179,7 +188,7 @@ export async function completeSignInFromCurrentUrl(): Promise<AuthSession> {
     expiresAt: Math.floor(Date.now() / 1000) + (tokens.expires_in ?? 3600),
     profile,
   };
-  sessionStorage.setItem(STORAGE_SESSION, JSON.stringify(session));
+  localStorage.setItem(AUTH_SESSION_STORAGE_KEY, JSON.stringify(session));
   return session;
 }
 

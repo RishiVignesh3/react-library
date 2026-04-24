@@ -16,12 +16,6 @@
     },
     {
       "path": "./tsconfig.spec.json"
-    },
-    {
-      "path": "../pkce-identity/tsconfig.lib.json"
-    },
-    {
-      "path": "../ui/tsconfig.lib.json"
     }
   ],
   "extends": "../tsconfig.base.json"

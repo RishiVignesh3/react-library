@@ -20,7 +20,7 @@ import {
 } from '@org/ui';
 
 import type { AuthSession } from '../auth/oidc';
-import { GOOGLE_OAUTH } from '../auth/oidc';
+import { GOOGLE_OAUTH, refreshAccessTokenCoordinated } from '../auth/oidc';
 import { useAuth } from '../auth/AuthProvider';
 import {
   DUMMY_BEARER_TOKEN,
@@ -70,7 +70,8 @@ function userinfoToCallout(
 }
 
 export function HomePage() {
-  const { user, isLoading, signIn, signOut, error, configured } = useAuth();
+  const { user, isLoading, signIn, signOut, error, configured, refreshUser } =
+    useAuth();
   const [realResult, setRealResult] = useState<UserinfoCheckResult | null>(
     null,
   );
@@ -79,6 +80,8 @@ export function HomePage() {
   );
   const [pendingReal, setPendingReal] = useState(false);
   const [pendingDummy, setPendingDummy] = useState(false);
+  const [pendingRefresh, setPendingRefresh] = useState(false);
+  const [refreshError, setRefreshError] = useState<string | null>(null);
 
   const runValidTokenCheck = useCallback(async () => {
     if (!user?.accessToken) {
@@ -102,6 +105,27 @@ export function HomePage() {
       setPendingDummy(false);
     }
   }, []);
+
+  const runRefreshToken = useCallback(async () => {
+    setRefreshError(null);
+    setPendingRefresh(true);
+    try {
+      const next = await refreshAccessTokenCoordinated({ force: true });
+      if (!next) {
+        setRefreshError(
+          'No refresh token stored. Sign in again with offline access.',
+        );
+        return;
+      }
+      await refreshUser();
+    } catch (e) {
+      setRefreshError(
+        e instanceof Error ? e.message : 'Could not refresh access token',
+      );
+    } finally {
+      setPendingRefresh(false);
+    }
+  }, [refreshUser]);
 
   if (!configured) {
     return (
@@ -142,6 +166,9 @@ export function HomePage() {
       />
       <Card>
         {error ? <Alert variant="error">{error}</Alert> : null}
+        {refreshError ? (
+          <Alert variant="error">{refreshError}</Alert>
+        ) : null}
         {user ? (
           <>
             <SplitRow
@@ -152,11 +179,38 @@ export function HomePage() {
                 </div>
               }
               actions={
-                <Button variant="danger" onClick={() => void signOut()}>
-                  Sign out
-                </Button>
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: '0.5rem',
+                    flexWrap: 'wrap',
+                    justifyContent: 'flex-end',
+                  }}
+                >
+                  <Button
+                    variant="secondary"
+                    disabled={!user.refreshToken || pendingRefresh}
+                    title={
+                      user.refreshToken
+                        ? 'Request new access token from Google'
+                        : 'No refresh token — sign in again with offline access'
+                    }
+                    onClick={() => void runRefreshToken()}
+                  >
+                    {pendingRefresh ? 'Refreshing…' : 'Refresh access token'}
+                  </Button>
+                  <Button variant="danger" onClick={() => void signOut()}>
+                    Sign out
+                  </Button>
+                </div>
               }
             />
+            {!user.refreshToken ? (
+              <Text variant="small">
+                Refresh is unavailable until you sign in with a refresh token
+                (offline access / consent).
+              </Text>
+            ) : null}
 
             <Divider />
 

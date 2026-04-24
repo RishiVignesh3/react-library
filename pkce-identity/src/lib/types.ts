@@ -29,3 +29,11 @@ export type TokenAuthorizationCodeRequest = {
   clientSecret?: string;
   extraFormFields?: Readonly<Record<string, string>>;
 };
+
+export type TokenRefreshRequest = {
+  grantType: 'refresh_token';
+  clientId: string;
+  refreshToken: string;
+  clientSecret?: string;
+  extraFormFields?: Readonly<Record<string, string>>;
+};

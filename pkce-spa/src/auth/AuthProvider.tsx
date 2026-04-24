@@ -10,7 +10,9 @@ import {
 import {
   AUTH_SESSION_STORAGE_KEY,
   getStoredSession,
+  getTokenRefreshBufferSeconds,
   isOidcConfigured,
+  refreshAccessTokenCoordinated,
   revokeAndClearSession,
   startSignInRedirect,
   type AuthSession,
@@ -61,6 +63,47 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     window.addEventListener('storage', onStorage);
     return () => window.removeEventListener('storage', onStorage);
   }, [configured, loadUser]);
+
+  /** Proactive refresh before access token expiry; reschedules when `user` updates. */
+  useEffect(() => {
+    if (!configured || isLoading || typeof window === 'undefined') {
+      return;
+    }
+    if (!user?.refreshToken) {
+      return;
+    }
+
+    let cancelled = false;
+    const bufferSec = getTokenRefreshBufferSeconds();
+    const delayMs = Math.max(
+      0,
+      (user.expiresAt - bufferSec) * 1000 - Date.now(),
+    );
+
+    const id = window.setTimeout(async () => {
+      if (cancelled) {
+        return;
+      }
+      try {
+        await refreshAccessTokenCoordinated({ force: false });
+        if (!cancelled) {
+          loadUser();
+        }
+      } catch (e) {
+        if (!cancelled) {
+          setError(
+            e instanceof Error ? e.message : 'Automatic token refresh failed',
+          );
+          loadUser();
+        }
+      }
+    }, delayMs);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(id);
+    };
+  }, [configured, isLoading, user, loadUser]);
 
   const refreshUser = useCallback(async () => {
     setError(null);

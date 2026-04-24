@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
 import { buildAuthorizationUrl } from './authorization';
-import { buildAuthorizationCodeTokenBody } from './token-request';
+import {
+  buildAuthorizationCodeTokenBody,
+  buildRefreshTokenBody,
+} from './token-request';
 
 describe('OAuth2 helpers', () => {
   it('buildAuthorizationUrl sets PKCE query parameters', () => {
@@ -31,5 +34,17 @@ describe('OAuth2 helpers', () => {
     const p = new URLSearchParams(body);
     expect(p.get('code_verifier')).toBe('verifier');
     expect(p.get('grant_type')).toBe('authorization_code');
+  });
+
+  it('buildRefreshTokenBody sets refresh grant', () => {
+    const body = buildRefreshTokenBody({
+      grantType: 'refresh_token',
+      clientId: 'cid',
+      refreshToken: 'rt',
+    });
+    const p = new URLSearchParams(body);
+    expect(p.get('grant_type')).toBe('refresh_token');
+    expect(p.get('refresh_token')).toBe('rt');
+    expect(p.get('client_id')).toBe('cid');
   });
 });

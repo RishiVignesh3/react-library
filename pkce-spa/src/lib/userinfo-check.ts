@@ -1,4 +1,4 @@
-import { GOOGLE_OAUTH } from '../auth/oidc';
+import { GOOGLE_OAUTH } from '@org/oauth-session';
 
 export type UserinfoCheckResult = {
   ok: boolean;

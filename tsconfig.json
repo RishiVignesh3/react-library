@@ -2,5 +2,24 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./component-library-e2e"
+    },
+    {
+      "path": "./component-library"
+    },
+    {
+      "path": "./pkce-spa-e2e"
+    },
+    {
+      "path": "./pkce-spa"
+    },
+    {
+      "path": "./ui"
+    },
+    {
+      "path": "./pkce-identity"
+    }
+  ]
 }

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "composite": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
@@ -18,7 +19,8 @@
     "target": "es2022",
     "customConditions": ["@org/source"],
     "paths": {
-      "@org/ui": ["ui/src/index.ts"]
+      "@org/ui": ["ui/src/index.ts"],
+      "@org/pkce-identity": ["pkce-identity/src/index.ts"]
     }
   }
 }

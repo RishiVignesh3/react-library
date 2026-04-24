@@ -1,0 +1,16 @@
+.root {
+  height: 1px;
+  margin: 0;
+  border: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border) 12%,
+    var(--color-border) 88%,
+    transparent
+  );
+}
+
+.spaced {
+  margin: var(--space-5) 0;
+}

@@ -1,5 +1,32 @@
+import { useCallback, useState } from 'react';
+
+import {
+  Alert,
+  Badge,
+  Button,
+  ButtonGrid,
+  ButtonGridCell,
+  Card,
+  Code,
+  Divider,
+  EndpointBlock,
+  PageHeader,
+  ResultCallout,
+  Section,
+  Shell,
+  SplitRow,
+  Text,
+  type ResultCalloutTone,
+} from '@org/ui';
+
 import type { AuthSession } from '../auth/oidc';
+import { GOOGLE_OAUTH } from '../auth/oidc';
 import { useAuth } from '../auth/AuthProvider';
+import {
+  DUMMY_BEARER_TOKEN,
+  fetchUserinfoWithToken,
+  type UserinfoCheckResult,
+} from '../lib/userinfo-check';
 
 function formatProfileName(session: AuthSession) {
   const p = session.profile;
@@ -12,48 +39,227 @@ function formatProfileName(session: AuthSession) {
   return p.sub || 'Signed in';
 }
 
+function userinfoToCallout(
+  label: string,
+  result: UserinfoCheckResult,
+  expectRejection: boolean,
+): {
+  title: string;
+  summary: string;
+  tone: ResultCalloutTone;
+  body: string;
+} {
+  const rejectedAsExpected = expectRejection && !result.ok;
+  const passed = expectRejection ? rejectedAsExpected : result.ok;
+  let summary: string;
+  let tone: ResultCalloutTone;
+  if (expectRejection) {
+    summary = rejectedAsExpected
+      ? `Rejected as expected — ${result.status} ${result.statusText}`
+      : result.ok
+        ? 'Unexpected: server accepted the dummy token'
+        : `Rejected (${result.status}) — see response below`;
+    tone = passed ? 'success' : result.ok ? 'danger' : 'warning';
+  } else {
+    summary = result.ok
+      ? `Success — ${result.status} ${result.statusText}`
+      : `Failed — ${result.status} ${result.statusText}`;
+    tone = result.ok ? 'success' : 'danger';
+  }
+  return { title: label, summary, tone, body: result.bodyPreview };
+}
+
 export function HomePage() {
   const { user, isLoading, signIn, signOut, error, configured } = useAuth();
+  const [realResult, setRealResult] = useState<UserinfoCheckResult | null>(
+    null,
+  );
+  const [dummyResult, setDummyResult] = useState<UserinfoCheckResult | null>(
+    null,
+  );
+  const [pendingReal, setPendingReal] = useState(false);
+  const [pendingDummy, setPendingDummy] = useState(false);
+
+  const runValidTokenCheck = useCallback(async () => {
+    if (!user?.accessToken) {
+      return;
+    }
+    setRealResult(null);
+    setPendingReal(true);
+    try {
+      setRealResult(await fetchUserinfoWithToken(user.accessToken));
+    } finally {
+      setPendingReal(false);
+    }
+  }, [user?.accessToken]);
+
+  const runDummyTokenCheck = useCallback(async () => {
+    setDummyResult(null);
+    setPendingDummy(true);
+    try {
+      setDummyResult(await fetchUserinfoWithToken(DUMMY_BEARER_TOKEN));
+    } finally {
+      setPendingDummy(false);
+    }
+  }, []);
 
   if (!configured) {
     return (
-      <div>
-        <h1>pkce-spa</h1>
-        <p>
-          Add <code>pkce-spa/.env</code> with{' '}
-          <code>VITE_OIDC_CLIENT_ID=…</code> (from Google Cloud OAuth client).
-        </p>
-      </div>
+      <Shell>
+        <PageHeader
+          title="pkce-spa"
+          badge={<Badge tone="accent">OAuth · PKCE</Badge>}
+        />
+        <Card>
+          <Text variant="muted">
+            Add <Code>pkce-spa/.env</Code> with{' '}
+            <Code>VITE_OIDC_CLIENT_ID=…</Code> (Google Cloud OAuth client).
+          </Text>
+        </Card>
+      </Shell>
     );
   }
 
   if (isLoading) {
-    return <p>Loading session…</p>;
+    return (
+      <Shell>
+        <PageHeader
+          title="pkce-spa"
+          badge={<Badge tone="accent">OAuth · PKCE</Badge>}
+        />
+        <Card>
+          <Text variant="muted">Loading session…</Text>
+        </Card>
+      </Shell>
+    );
   }
 
   return (
-    <div>
-      <h1>pkce-spa</h1>
-      {error ? (
-        <p role="alert" style={{ color: 'var(--ifm-color-danger, #b91c1c)' }}>
-          {error}
-        </p>
-      ) : null}
-      {user ? (
-        <>
-          <p>
-            Signed in as{' '}
-            <strong>{formatProfileName(user)}</strong>
-          </p>
-          <button type="button" onClick={() => void signOut()}>
-            Sign out
-          </button>
-        </>
-      ) : (
-        <button type="button" onClick={() => void signIn()}>
-          Sign in with Google
-        </button>
-      )}
-    </div>
+    <Shell>
+      <PageHeader
+        title="pkce-spa"
+        badge={<Badge tone="accent">OAuth · PKCE</Badge>}
+      />
+      <Card>
+        {error ? <Alert variant="error">{error}</Alert> : null}
+        {user ? (
+          <>
+            <SplitRow
+              main={
+                <div>
+                  <Text variant="label">Signed in</Text>
+                  <Text variant="lead">{formatProfileName(user)}</Text>
+                </div>
+              }
+              actions={
+                <Button variant="danger" onClick={() => void signOut()}>
+                  Sign out
+                </Button>
+              }
+            />
+
+            <Divider />
+
+            <Section
+              title="Token vs API"
+              description="Calls Google OIDC userinfo — the same endpoint used after login. Your access token should return profile JSON; a fake token should be rejected."
+              headingLevel={2}
+            >
+              <EndpointBlock url={GOOGLE_OAUTH.userinfoEndpoint} />
+
+              <ButtonGrid>
+                <ButtonGridCell>
+                  <Button
+                    variant="positive"
+                    fullWidth
+                    disabled={pendingReal}
+                    onClick={() => void runValidTokenCheck()}
+                  >
+                    {pendingReal ? 'Calling…' : 'Call API with your access token'}
+                  </Button>
+                  {pendingReal ? (
+                    <Text variant="small">Request in flight…</Text>
+                  ) : null}
+                </ButtonGridCell>
+                <ButtonGridCell>
+                  <Button
+                    variant="caution"
+                    fullWidth
+                    disabled={pendingDummy}
+                    onClick={() => void runDummyTokenCheck()}
+                  >
+                    {pendingDummy ? 'Calling…' : 'Call API with invalid token'}
+                  </Button>
+                  {pendingDummy ? (
+                    <Text variant="small">Request in flight…</Text>
+                  ) : null}
+                </ButtonGridCell>
+              </ButtonGrid>
+
+              {realResult ? (
+                <ResultCallout
+                  {...userinfoToCallout(
+                    'Your access token',
+                    realResult,
+                    false,
+                  )}
+                />
+              ) : null}
+              {dummyResult ? (
+                <ResultCallout
+                  {...userinfoToCallout(
+                    'Dummy token (expect rejection)',
+                    dummyResult,
+                    true,
+                  )}
+                />
+              ) : null}
+            </Section>
+          </>
+        ) : (
+          <>
+            <Text variant="muted">
+              Sign in to store an access token, then verify it against Google
+              userinfo.
+            </Text>
+            <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+              <Button variant="primary" size="lg" onClick={() => void signIn()}>
+                Sign in with Google
+              </Button>
+            </div>
+
+            <Divider />
+
+            <Section
+              title="Reject invalid token"
+              description="You can test the API without signing in — the dummy bearer token should be rejected."
+              headingLevel={2}
+            >
+              <EndpointBlock url={GOOGLE_OAUTH.userinfoEndpoint} />
+              <Button
+                variant="caution"
+                fullWidth
+                disabled={pendingDummy}
+                onClick={() => void runDummyTokenCheck()}
+              >
+                {pendingDummy ? 'Calling…' : 'Call API with invalid token'}
+              </Button>
+              {pendingDummy ? (
+                <Text variant="small">Request in flight…</Text>
+              ) : null}
+              {dummyResult ? (
+                <ResultCallout
+                  {...userinfoToCallout(
+                    'Dummy token (expect rejection)',
+                    dummyResult,
+                    true,
+                  )}
+                />
+              ) : null}
+            </Section>
+          </>
+        )}
+      </Card>
+    </Shell>
   );
 }

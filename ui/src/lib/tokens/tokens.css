@@ -1,0 +1,67 @@
+/**
+ * Design tokens — import once at app entry (via @org/ui) or Storybook preview.
+ * Components reference these via var() with fallbacks where noted in modules.
+ */
+:root {
+  color-scheme: dark;
+
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --color-bg-0: #0c0e12;
+  --color-bg-1: #12161e;
+  --color-surface: rgba(24, 30, 42, 0.88);
+  --color-surface-elevated: rgba(32, 40, 56, 0.92);
+  --color-border: rgba(120, 140, 180, 0.2);
+  --color-border-strong: rgba(120, 140, 180, 0.35);
+
+  --color-text: #e8ecf4;
+  --color-text-muted: #8b95a8;
+  --color-text-subtle: #5c6578;
+
+  --color-accent: #5eead4;
+  --color-accent-muted: rgba(94, 234, 212, 0.14);
+  --color-accent-strong: #14b8a6;
+  --color-accent-pressed: #0d9488;
+
+  --color-danger: #fb7185;
+  --color-danger-muted: rgba(251, 113, 133, 0.14);
+  --color-danger-text: #fecdd3;
+
+  --color-success: #4ade80;
+  --color-success-muted: rgba(74, 222, 128, 0.16);
+  --color-success-text: #bbf7d0;
+
+  --color-warn: #fbbf24;
+  --color-warn-muted: rgba(251, 191, 36, 0.14);
+  --color-warn-text: #fde68a;
+
+  --color-info: #93c5fd;
+  --color-focus-ring: var(--color-accent);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  --shadow-card:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  --text-xs: 0.7rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: clamp(1.75rem, 4vw, 2.125rem);
+}

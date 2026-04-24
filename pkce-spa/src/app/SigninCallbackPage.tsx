@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { Alert, Card, PageHeader, Shell, Text } from '@org/ui';
+
 import { useAuth } from '../auth/AuthProvider';
 import {
   completeSignInFromCurrentUrl,
@@ -38,13 +40,16 @@ export function SigninCallbackPage() {
     };
   }, [navigate, refreshUser]);
 
-  if (message) {
-    return (
-      <p role="alert" style={{ color: 'var(--ifm-color-danger, #b91c1c)' }}>
-        {message}
-      </p>
-    );
-  }
-
-  return <p>Completing sign-in…</p>;
+  return (
+    <Shell>
+      <PageHeader title="Sign-in" />
+      <Card>
+        {message ? (
+          <Alert variant="error">{message}</Alert>
+        ) : (
+          <Text variant="muted">Completing sign-in…</Text>
+        )}
+      </Card>
+    </Shell>
+  );
 }

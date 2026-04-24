@@ -1,0 +1,19 @@
+.root {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-md);
+  line-height: 1.45;
+}
+
+.error {
+  background: var(--color-danger-muted);
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  color: var(--color-danger-text);
+}
+
+.info {
+  background: rgba(147, 197, 253, 0.1);
+  border: 1px solid rgba(147, 197, 253, 0.35);
+  color: var(--color-info);
+}

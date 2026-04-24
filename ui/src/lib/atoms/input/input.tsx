@@ -4,7 +4,8 @@ import styles from './input.module.css';
 
 export type InputSize = 'sm' | 'md' | 'lg';
 
-export type InputProps = ComponentPropsWithoutRef<'input'> & {
+export type InputProps = Omit<ComponentPropsWithoutRef<'input'>, 'size'> & {
+  /** Visual size (not the HTML `size` attribute). */
   size?: InputSize;
   invalid?: boolean;
   inline?: boolean;

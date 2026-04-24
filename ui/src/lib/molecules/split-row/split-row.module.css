@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.main {
+  min-width: 0;
+}
+
+.actions {
+  flex-shrink: 0;
+}

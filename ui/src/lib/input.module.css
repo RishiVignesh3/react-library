@@ -1,0 +1,71 @@
+.root {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.375rem;
+  font-family: inherit;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #0f172a;
+  background-color: #ffffff;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.root::placeholder {
+  color: #94a3b8;
+}
+
+.root:hover:not(:disabled):not(:read-only) {
+  border-color: #94a3b8;
+}
+
+.root:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.2);
+}
+
+.root:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background-color: #f1f5f9;
+}
+
+.root:read-only:not(:disabled) {
+  background-color: #f8fafc;
+  cursor: default;
+}
+
+.invalid {
+  border-color: #dc2626;
+}
+
+.invalid:focus {
+  border-color: #b91c1c;
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 0.2);
+}
+
+.sm {
+  padding: 0.375rem 0.625rem;
+  font-size: 0.8125rem;
+}
+
+.md {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+}
+
+.lg {
+  padding: 0.625rem 0.875rem;
+  font-size: 1rem;
+}
+
+.inline {
+  width: auto;
+  min-width: 0;
+}

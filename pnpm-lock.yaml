@@ -14,6 +14,9 @@ importers:
       '@react-three/fiber':
         specifier: ^9.6.0
         version: 9.6.0(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(three@0.184.0)
+      idb:
+        specifier: ^8.0.3
+        version: 8.0.3
       react:
         specifier: ^19.0.0
         version: 19.2.5
@@ -4085,6 +4088,9 @@ packages:
     engines: {node: ^10 || ^12 || >= 14}
     peerDependencies:
       postcss: ^8.1.0
+
+  idb@8.0.3:
+    resolution: {integrity: sha512-LtwtVyVYO5BqRvcsKuB2iUMnHwPVByPCXFXOpuU96IZPPoPN6xjOGxZQ74pgSVVLQWtUOYgyeL4GE98BY5D3wg==}
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -10797,6 +10803,8 @@ snapshots:
   icss-utils@5.1.0(postcss@8.5.10):
     dependencies:
       postcss: 8.5.10
+
+  idb@8.0.3: {}
 
   ieee754@1.2.1: {}
 

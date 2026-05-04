@@ -19,9 +19,9 @@
     "target": "es2022",
     "customConditions": ["@org/source"],
     "paths": {
-      "@org/ui": ["ui/src/index.ts"],
-      "@org/pkce-identity": ["pkce-identity/src/index.ts"],
-      "@org/oauth-session": ["oauth-session/src/index.ts"]
+      "@org/ui": ["lib/ui/src/index.ts"],
+      "@org/pkce-identity": ["lib/pkce-identity/src/index.ts"],
+      "@org/oauth-session": ["lib/oauth-session/src/index.ts"]
     }
   }
 }

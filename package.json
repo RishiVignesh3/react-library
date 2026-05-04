@@ -54,7 +54,9 @@
     "vitest": "~4.1.0"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "app/*",
+    "lib/*"
   ],
   "dependencies": {
     "@react-three/drei": "^10.7.7",

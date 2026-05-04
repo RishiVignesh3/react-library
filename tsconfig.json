@@ -4,25 +4,25 @@
   "files": [],
   "references": [
     {
-      "path": "./component-library-e2e"
+      "path": "./app/component-library-e2e"
     },
     {
-      "path": "./component-library"
+      "path": "./app/component-library"
     },
     {
-      "path": "./pkce-spa-e2e"
+      "path": "./app/pkce-spa-e2e"
     },
     {
-      "path": "./pkce-spa"
+      "path": "./app/pkce-spa"
     },
     {
-      "path": "./ui"
+      "path": "./lib/ui"
     },
     {
-      "path": "./pkce-identity"
+      "path": "./lib/pkce-identity"
     },
     {
-      "path": "./oauth-session"
+      "path": "./lib/oauth-session"
     }
   ]
 }

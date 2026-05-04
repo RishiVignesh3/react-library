@@ -1,0 +1,10 @@
+{
+  "name": "component-library-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "app/component-library-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["component-library"],
+  "// targets": "to see all targets run: nx show project component-library-e2e --web",
+  "targets": {}
+}

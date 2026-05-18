@@ -1,11 +1,14 @@
 import type { ReactElement } from 'react';
 import { SectionHeader } from '../../components/SectionHeader/SectionHeader';
+import { useI18n } from '../../i18n/I18nProvider';
+import type { MessageKey } from '../../i18n/messageKey';
 import styles from './Contact.module.css';
 
 interface ContactLink {
   readonly id: string;
-  readonly label: string;
   readonly href: string;
+  readonly display: string;
+  readonly ariaKey: MessageKey;
   readonly Icon: () => ReactElement;
 }
 
@@ -45,37 +48,43 @@ function IconMail() {
 const CONTACT_LINKS: readonly ContactLink[] = [
   {
     id: 'github',
-    label: 'github.com/rvignes',
     href: 'https://github.com/rvignes',
+    display: 'github.com/rvignes',
+    ariaKey: 'contact.github',
     Icon: IconGithub,
   },
   {
     id: 'linkedin',
-    label: 'linkedin.com/in/rvignes',
     href: 'https://linkedin.com/in/rvignes',
+    display: 'linkedin.com/in/rvignes',
+    ariaKey: 'contact.linkedin',
     Icon: IconLinkedIn,
   },
   {
     id: 'email',
-    label: 'hello@rvignes.dev',
     href: 'mailto:hello@rvignes.dev',
+    display: 'hello@rvignes.dev',
+    ariaKey: 'contact.email',
     Icon: IconMail,
   },
 ] as const;
 
 export default function Contact() {
+  const { t } = useI18n();
+
   return (
     <section className={styles.page} aria-labelledby="contact-heading">
       <SectionHeader
         titleId="contact-heading"
-        eyebrow="Contact"
-        title="Let's build something memorable"
-        lead="I'm open to thoughtful conversations about staff-level roles, contract work, and high-trust collaborations."
+        eyebrow={t('contact.eyebrow')}
+        title={t('contact.title')}
+        lead={t('contact.lead')}
       />
 
-      <ul className={styles.links} aria-label="Contact links">
-        {CONTACT_LINKS.map(({ id, label, href, Icon }) => {
+      <ul className={styles.links} aria-label={t('a11y.contactLinks')}>
+        {CONTACT_LINKS.map(({ id, href, display, ariaKey, Icon }) => {
           const external = !href.startsWith('mailto:');
+          const aria = `${t(ariaKey)} · ${display}`;
           return (
             <li key={id}>
               <a
@@ -83,11 +92,13 @@ export default function Contact() {
                 href={href}
                 target={external ? '_blank' : undefined}
                 rel={external ? 'noopener noreferrer' : undefined}
+                aria-label={aria}
+                title={aria}
               >
                 <span className={styles.linkIconWrap} aria-hidden="true">
                   <Icon />
                 </span>
-                <span className={styles.linkLabel}>{label}</span>
+                <span className={styles.linkLabel}>{display}</span>
                 <span className={styles.linkArrow} aria-hidden="true">
                   ↗
                 </span>

@@ -13,6 +13,7 @@
 
 .inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-4);
   max-width: var(--content-max-width);
@@ -25,6 +26,20 @@
   backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
   box-shadow: var(--shadow-nav), var(--shadow-nav-inset);
+}
+
+.controls {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+@media (min-width: 900px) {
+  .controls {
+    margin-left: 0;
+  }
 }
 
 .links {

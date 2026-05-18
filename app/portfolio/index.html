@@ -45,6 +45,25 @@
         }
       })();
     </script>
+    <script>
+      (function () {
+        var KEY = '@org/portfolio/locale';
+        try {
+          var raw = localStorage.getItem(KEY);
+          var loc =
+            raw === 'en' ||
+            raw === 'de' ||
+            raw === 'es' ||
+            raw === 'fr' ||
+            raw === 'ja'
+              ? raw
+              : 'en';
+          document.documentElement.lang = loc;
+        } catch (e) {
+          document.documentElement.lang = 'en';
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>

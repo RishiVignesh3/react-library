@@ -1,64 +1,64 @@
 import { SectionHeader } from '../../components/SectionHeader/SectionHeader';
+import { useI18n } from '../../i18n/I18nProvider';
+import type { MessageKey } from '../../i18n/messageKey';
 import styles from './AboutMe.module.css';
 
-const SKILLS = [
-  'TypeScript',
-  'React',
-  'Node.js',
-  'System Design',
-  'GraphQL',
-  'REST APIs',
-  'CI/CD',
-  'Nx Monorepo',
-  'Testing',
-  'Performance',
-] as const;
+const SKILL_KEYS = [
+  'skills.typescript',
+  'skills.react',
+  'skills.nodejs',
+  'skills.systemDesign',
+  'skills.graphql',
+  'skills.restApis',
+  'skills.cicd',
+  'skills.nxMonorepo',
+  'skills.testing',
+  'skills.performance',
+] as const satisfies readonly MessageKey[];
 
 export default function AboutMe() {
+  const { t } = useI18n();
+
   return (
     <section className={styles.page} aria-labelledby="about-heading">
       <SectionHeader
         titleId="about-heading"
-        eyebrow="Staff engineer · portfolio"
-        title="I craft frontends that scale—and teams that ship."
-        lead="Frontend platform, monrepo architecture, and developer experience. Calm systems, sharp execution."
+        eyebrow={t('about.eyebrow')}
+        title={t('about.title')}
+        lead={t('about.lead')}
       />
 
       <div className={styles.displayLine} aria-hidden="true">
         <span className={styles.displayLineInner} />
       </div>
 
-      <p className={styles.bio}>
-        I lead technical direction where product velocity and platform health meet. My
-        work sits at the intersection of React architecture, build systems, and the
-        human side of engineering: mentoring, alignment, and standards that stick.
-      </p>
+      <p className={styles.bio}>{t('about.bio')}</p>
 
       <dl className={styles.stats}>
         <div className={styles.stat}>
-          <dt className={styles.statLabel}>Impact</dt>
-          <dd className={styles.statValue}>Platform</dd>
+          <dt className={styles.statLabel}>{t('about.stats.impact')}</dt>
+          <dd className={styles.statValue}>{t('about.stats.impactVal')}</dd>
         </div>
         <div className={styles.stat}>
-          <dt className={styles.statLabel}>Focus</dt>
-          <dd className={styles.statValue}>DX + UX</dd>
+          <dt className={styles.statLabel}>{t('about.stats.focus')}</dt>
+          <dd className={styles.statValue}>{t('about.stats.focusVal')}</dd>
         </div>
         <div className={styles.stat}>
-          <dt className={styles.statLabel}>Style</dt>
-          <dd className={styles.statValue}>Pragmatic</dd>
+          <dt className={styles.statLabel}>{t('about.stats.style')}</dt>
+          <dd className={styles.statValue}>{t('about.stats.styleVal')}</dd>
         </div>
       </dl>
 
       <div className={styles.skills}>
-        <h2 className={styles.skillsTitle}>Stack &amp; craft</h2>
-        <ul className={styles.tags} aria-label="Skills and technologies">
-          {SKILLS.map((skill, index) => (
+        <h2 className={styles.skillsTitle}>{t('about.skillsTitle')}</h2>
+        <ul className={styles.tags} aria-label={t('a11y.skillsList')}>
+          {SKILL_KEYS.map((key, index) => (
             <li
-              key={skill}
+              key={key}
               className={styles.tag}
               style={{ animationDelay: `${index * 55}ms` }}
             >
-              {skill}
+              {t(key)}
             </li>
           ))}
         </ul>

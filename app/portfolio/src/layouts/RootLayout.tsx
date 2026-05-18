@@ -1,13 +1,15 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { NavBar } from '../components/NavBar/NavBar';
+import { useI18n } from '../i18n/I18nProvider';
 import styles from './RootLayout.module.css';
 
 function PageFallback() {
+  const { t } = useI18n();
   return (
     <div className={styles.loading}>
       <span className={styles.spinner} aria-hidden="true" />
-      Loading
+      {t('loading')}
     </div>
   );
 }

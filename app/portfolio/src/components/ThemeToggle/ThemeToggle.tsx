@@ -3,12 +3,14 @@ import { useCallback, useId } from 'react';
 import { THEME_PREFERENCE_OPTIONS } from '../../theme/constants';
 import { useTheme } from '../../theme/ThemeProvider';
 import type { ThemePreference } from '../../theme/types';
+import { useI18n } from '../../i18n/I18nProvider';
+import type { MessageKey } from '../../i18n/messageKey';
 import styles from './ThemeToggle.module.css';
 
-const LABELS: Record<ThemePreference, string> = {
-  system: 'Match system',
-  light: 'Light theme',
-  dark: 'Dark theme',
+const THEME_LABEL: Record<ThemePreference, MessageKey> = {
+  system: 'theme.system',
+  light: 'theme.light',
+  dark: 'theme.dark',
 };
 
 function IconSystem({ className }: Readonly<{ className?: string }>) {
@@ -52,6 +54,7 @@ const ICONS: Record<ThemePreference, typeof IconSystem> = {
 
 export function ThemeToggle() {
   const { preference, setPreference } = useTheme();
+  const { t } = useI18n();
   const groupId = useId();
   const labelledBy = `${groupId}-legend`;
 
@@ -76,19 +79,20 @@ export function ThemeToggle() {
       onKeyDown={onKeyDown}
     >
       <span id={labelledBy} className={styles.visuallyHidden}>
-        Color theme
+        {t('a11y.colorTheme')}
       </span>
       {THEME_PREFERENCE_OPTIONS.map((key) => {
         const Icon = ICONS[key];
         const pressed = preference === key;
+        const label = t(THEME_LABEL[key]);
         return (
           <button
             key={key}
             type="button"
             className={[styles.btn, pressed ? styles.active : ''].join(' ')}
             aria-pressed={pressed}
-            aria-label={LABELS[key]}
-            title={LABELS[key]}
+            aria-label={label}
+            title={label}
             onClick={() => setPreference(key)}
           >
             <Icon className={styles.icon} />

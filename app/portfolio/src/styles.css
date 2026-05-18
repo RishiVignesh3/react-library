@@ -1,6 +1,5 @@
-/* ─── Design tokens ───────────────────────────────────────────── */
+/* ─── Shared tokens (not theme-specific) ────────────────────── */
 :root {
-  /* Typography */
   --font-display: 'Fraunces', ui-serif, Georgia, serif;
   --font-sans: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
@@ -15,7 +14,6 @@
   --font-size-4xl: 2.5rem;
   --font-size-hero: 3.25rem;
 
-  /* Spacing (4px base) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -27,7 +25,23 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
-  /* Warm dark — mineral + molten copper */
+  --content-max-width: 68rem;
+  --nav-height: 4rem;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --glass-blur: 20px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-mid: 420ms;
+  --dur-slow: 900ms;
+
+  /* Dark palette (default) */
   --color-bg-deep: #0c0a09;
   --color-bg: #14110f;
   --color-surface: rgba(28, 25, 23, 0.72);
@@ -44,29 +58,70 @@
   --color-text-secondary: #d6d3d1;
   --color-text-muted: #a8a29e;
 
-  /* Mesh / glass */
   --color-mesh-1: rgba(180, 83, 9, 0.16);
   --color-mesh-2: rgba(217, 119, 6, 0.1);
   --color-mesh-3: rgba(67, 56, 202, 0.07);
-  --glass-blur: 20px;
   --glass-surface: rgba(12, 10, 9, 0.55);
 
-  /* Layout */
-  --content-max-width: 68rem;
-  --nav-height: 4rem;
+  --color-selection-bg: rgba(251, 191, 36, 0.28);
+  --color-selection-fg: var(--color-text-primary);
 
-  /* Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
+  /* Ink on gold buttons / logo mark (constant across themes) */
+  --color-on-accent: #1c1917;
 
-  /* Motion */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 180ms;
-  --dur-mid: 420ms;
-  --dur-slow: 900ms;
+  --shadow-nav: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-nav-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  /* Edge vignette over mesh (theme-specific; dark wash breaks light-mode text) */
+  --shell-vignette-end: rgba(12, 10, 9, 0.85);
+  --shell-mesh-opacity: 0.55;
+
+  /* Deep end-stop for subtle gradients on cards / links (not black in light mode) */
+  --color-fill-gradient-end: rgba(12, 10, 9, 0.92);
+  --color-pill-bg: rgba(0, 0, 0, 0.2);
+  --color-tag-bg: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg-deep: #f0efec;
+  --color-bg: #e7e5e2;
+  --color-surface: rgba(255, 255, 255, 0.88);
+  --color-surface-raised: #ffffff;
+  --color-border: rgba(28, 25, 23, 0.14);
+  --color-border-strong: rgba(217, 119, 6, 0.4);
+
+  --color-accent: #b45309;
+  --color-accent-bright: #c2410c;
+  --color-accent-soft: #9a3412;
+  --color-accent-glow: rgba(217, 119, 6, 0.18);
+
+  --color-text-primary: #0c0a09;
+  --color-text-secondary: #292524;
+  --color-text-muted: #57534e;
+
+  --color-mesh-1: rgba(217, 119, 6, 0.1);
+  --color-mesh-2: rgba(180, 83, 9, 0.06);
+  --color-mesh-3: rgba(67, 56, 202, 0.05);
+  --glass-surface: rgba(255, 255, 255, 0.82);
+
+  --color-selection-bg: rgba(180, 83, 9, 0.22);
+  --color-selection-fg: var(--color-text-primary);
+
+  --shadow-nav: 0 4px 28px rgba(28, 25, 23, 0.08);
+  --shadow-nav-inset: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  --shell-vignette-end: rgba(247, 246, 244, 0.82);
+  --shell-mesh-opacity: 0.38;
+
+  --color-fill-gradient-end: rgba(255, 255, 255, 0.97);
+  --color-pill-bg: rgba(28, 25, 23, 0.06);
+  --color-tag-bg: rgba(28, 25, 23, 0.07);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -85,7 +140,7 @@
   }
 }
 
-/* ─── Reset ──────────────────────────────────────────────────── */
+/* ─── Reset ─────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -116,8 +171,6 @@ body {
   line-height: 1.6;
 }
 
-/* Ambient layer: mesh + film grain (single pseudo-element on body via #root wrapper in layout — grain in layout) */
-
 ul,
 ol {
   list-style: none;
@@ -127,14 +180,12 @@ a {
   color: inherit;
 }
 
-/* Focus — visible, on-brand */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-/* Selection */
 ::selection {
-  background: rgba(251, 191, 36, 0.28);
-  color: var(--color-text-primary);
+  background: var(--color-selection-bg);
+  color: var(--color-selection-fg);
 }

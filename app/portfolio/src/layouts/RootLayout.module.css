@@ -29,7 +29,7 @@
   background: radial-gradient(
     ellipse 100% 100% at 50% 0%,
     transparent 40%,
-    rgba(12, 10, 9, 0.85) 100%
+    var(--shell-vignette-end) 100%
   );
 }
 
@@ -38,7 +38,7 @@
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  opacity: 0.55;
+  opacity: var(--shell-mesh-opacity);
   filter: blur(80px);
   transform: translateZ(0);
   background:

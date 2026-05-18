@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { NAV_ITEMS } from '../../router/navItems';
 import { PATHS } from '../../router/paths';
+import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
 import styles from './NavBar.module.css';
 
 export function NavBar() {
@@ -26,6 +27,7 @@ export function NavBar() {
             </NavLink>
           ))}
         </div>
+        <ThemeToggle />
       </div>
     </nav>
   );

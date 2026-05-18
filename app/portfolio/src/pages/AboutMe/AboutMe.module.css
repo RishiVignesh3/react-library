@@ -115,7 +115,7 @@
   font-size: var(--font-size-sm);
   font-weight: 500;
   color: var(--color-text-secondary);
-  background: rgba(0, 0, 0, 0.25);
+  background: var(--color-tag-bg);
   animation: tagIn var(--dur-mid) var(--ease-out-expo) both;
   transition:
     border-color var(--dur-fast) var(--ease-out-expo),

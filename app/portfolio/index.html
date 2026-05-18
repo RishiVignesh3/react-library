@@ -19,6 +19,32 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      (function () {
+        var KEY = '@org/portfolio/theme-preference';
+        try {
+          var raw = localStorage.getItem(KEY);
+          var pref =
+            raw === 'light' || raw === 'dark' || raw === 'system'
+              ? raw
+              : 'system';
+          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var resolved = pref === 'system' ? (dark ? 'dark' : 'light') : pref;
+          document.documentElement.setAttribute('data-theme', resolved);
+          document.documentElement.style.colorScheme = resolved;
+          document.documentElement.setAttribute('data-theme-preference', pref);
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta)
+            meta.setAttribute(
+              'content',
+              resolved === 'dark' ? '#0c0a09' : '#f0efec',
+            );
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          document.documentElement.style.colorScheme = 'dark';
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>

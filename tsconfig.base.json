@@ -21,7 +21,8 @@
     "paths": {
       "@org/ui": ["lib/ui/src/index.ts"],
       "@org/pkce-identity": ["lib/pkce-identity/src/index.ts"],
-      "@org/oauth-session": ["lib/oauth-session/src/index.ts"]
+      "@org/oauth-session": ["lib/oauth-session/src/index.ts"],
+      "mf_remote/Module": ["app/mf_remote/src/remote-entry.ts"]
     }
   }
 }

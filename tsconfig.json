@@ -23,6 +23,18 @@
     },
     {
       "path": "./lib/oauth-session"
+    },
+    {
+      "path": "./app/react-webgl"
+    },
+    {
+      "path": "./app/mf_remote"
+    },
+    {
+      "path": "./app/pkm-folio"
+    },
+    {
+      "path": "./app/mf-host"
     }
   ]
 }

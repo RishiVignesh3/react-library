@@ -1,19 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "composite": false,
-    "declaration": false,
-    "declarationMap": false,
-    "emitDeclarationOnly": false,
-    "outDir": "../../dist/out-tsc",
     "lib": ["es2022", "dom", "dom.iterable"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "outDir": "../../dist/out-tsc/app/mf-host",
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts",
-      "vite/client"
+      "@nx/react/typings/image.d.ts"
     ]
   },
   "exclude": [
@@ -24,16 +17,12 @@
     "src/**/*.spec.js",
     "src/**/*.test.js",
     "src/**/*.spec.jsx",
-    "src/**/*.test.jsx",
-    "vite.config.ts",
-    "vite.config.mts",
-    "vitest.config.ts",
-    "vitest.config.mts"
+    "src/**/*.test.jsx"
   ],
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
-      "path": "../../lib/ui/tsconfig.lib.json"
+      "path": "../mf_remote/tsconfig.app.json"
     }
   ]
 }

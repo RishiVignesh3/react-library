@@ -1,0 +1,15 @@
+{
+  "name": "mf-host",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "app/mf-host/src",
+  "projectType": "application",
+  "tags": [],
+  "implicitDependencies": ["mf_remote"],
+  "targets": {
+    "serve": {
+      "options": {
+        "port": 4200
+      }
+    }
+  }
+}

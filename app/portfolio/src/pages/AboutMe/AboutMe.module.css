@@ -44,6 +44,7 @@
   line-height: 1.75;
   max-width: 52ch;
   font-weight: 400;
+  white-space: pre-line;
 }
 
 .stats {

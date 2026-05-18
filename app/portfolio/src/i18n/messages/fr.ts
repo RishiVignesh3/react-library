@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 export const messagesFr = {
   meta: {
-    documentTitle: 'RV · Staff engineer & plateforme frontend',
+    documentTitle: 'Rishi Vignesh K · Ingénieur logiciel',
     documentDescription:
-      'Portfolio — Staff engineer axé plateforme frontend, React à l’échelle et expérience développeur.',
+      'Portfolio de Rishi Vignesh K — ingénieur logiciel stimulé par des stacks et des organisations variés, avec une expérience des équipes produit à la livraison côté client.',
   },
   a11y: {
     mainNav: 'Navigation principale',
@@ -38,18 +38,18 @@ export const messagesFr = {
   },
   loading: 'Chargement',
   about: {
-    eyebrow: 'Staff engineer · portfolio',
-    title: 'Je crée des frontends qui passent à l’échelle — et des équipes qui livrent.',
-    lead: 'Plateforme frontend, architecture monorepo et expérience développeur. Systèmes calmes, exécution nette.',
-    bio: 'Je porte la direction technique là où vitesse produit et santé plateforme se rencontrent. Mon travail se situe au croisement de l’architecture React, des build systems et de l’humain : mentorat, alignement et standards qui durent.',
-    skillsTitle: 'Stack & savoir-faire',
+    eyebrow: 'Rishi Vignesh K · Ingénieur logiciel',
+    title: 'Construire des logiciels fiables — et rester motivé par de nouveaux stacks et contextes organisationnels.',
+    lead: 'Diplômé en informatique avec une expérience concrète sur des missions variées — des fonctionnalités greenfield aux systèmes en production. La diversité me motive vraiment : organisations, domaines et outils différents ; j\'aligne l\'architecture sur les objectifs de chaque initiative.',
+    bio: "Je m'appelle Rishi Vignesh K. J'ai terminé mes études préuniversitaires en 2016, puis obtenu un Bachelor of Engineering en informatique (Computer Science and Engineering) en 2020 — une base solide en algorithmes, systèmes et pratique d'ingénierie logicielle disciplinée.\n\nJe suis ingénieur logiciel professionnel depuis novembre 2020. Mon travail couvre des organisations de services et de produit ainsi que plusieurs initiatives : analyse et conception, implémentation, tests, mises en production et suivi avec les parties prenantes et l'équipe. J'apprécie le contraste entre ces univers — la responsabilité sur une feuille de route produit face au rythme et à la clarté en livraison client — et j'apprends vite dans chaque contexte.\n\nJe suis enthousiaste à l'idée de travailler sur différentes piles technologiques — frontends, backends, APIs, persistance et outils de livraison. Les nouveaux langages, frameworks et contraintes m'intéressent ; je choisis ce qui sert la maintenabilité, la performance et le calendrier sans être enfermé dans une boîte à outils unique.",
+    skillsTitle: 'Technologies et pratiques',
     stats: {
-      impact: 'Impact',
-      focus: 'Focus',
-      style: 'Style',
-      impactVal: 'Plateforme',
-      focusVal: 'DX + UX',
-      styleVal: 'Pragmatique',
+      impact: 'Formation',
+      focus: 'Parcours',
+      style: 'État d\'esprit',
+      impactVal: 'B.E., Computer Science & Engineering (2020)',
+      focusVal: 'Ingénieur logiciel depuis nov. 2020',
+      styleVal: 'Soif de variété (stacks & organisations)',
     },
   },
   skills: {

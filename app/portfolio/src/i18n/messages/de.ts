@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 export const messagesDe = {
   meta: {
-    documentTitle: 'RV · Staff Engineer & Frontend-Plattform',
+    documentTitle: 'Rishi Vignesh K · Software Engineer',
     documentDescription:
-      'Portfolio — Staff Engineer mit Fokus auf Frontend-Plattform, skalatives React und Developer Experience.',
+      'Portfolio von Rishi Vignesh K — Softwareingenieur, motiviert durch vielfältige Stacks und Organisationsformen, mit Erfahrung von Produktteams bis zur kundenorientierten Lieferung.',
   },
   a11y: {
     mainNav: 'Hauptnavigation',
@@ -38,18 +38,18 @@ export const messagesDe = {
   },
   loading: 'Lädt',
   about: {
-    eyebrow: 'Staff Engineer · Portfolio',
-    title: 'Ich baue Frontends, die skalieren — und Teams, die liefern.',
-    lead: 'Frontend-Plattform, Monorepo-Architektur und Developer Experience. Ruhige Systeme, präzise Umsetzung.',
-    bio: 'Ich verantworte technische Richtung dort, wo Produktgeschwindigkeit und Plattform-Gesundheit zusammentreffen. Meine Arbeit liegt im Schnittpunkt aus React-Architektur, Build-Systemen und der menschlichen Seite: Mentoring, Alignment und Standards, die bleiben.',
-    skillsTitle: 'Stack & Handwerk',
+    eyebrow: 'Rishi Vignesh K · Software Engineer',
+    title: 'Zuverlässige Software entwickeln — und begeistert von neuen Stacks und Organisationskontexten.',
+    lead: 'Informatikabsolvent mit Praxiserfahrung über Mandate hinweg — von Greenfield-Features bis Produktionssystemen. Vielfalt motiviert mich wirklich: unterschiedliche Organisationen, Domänen und Tools, und die Architektur stimme ich jeweils mit den Zielen der Initiative ab.',
+    bio: "Ich bin Rishi Vignesh K. 2016 schloss ich die Schul- und Vorstudienphase ab, 2020 den Bachelor of Engineering in Computer Science and Engineering — eine solide Basis in Algorithmen, Systemen und disziplinierter Softwareentwicklung.\n\nSeit November 2020 bin ich beruflich als Softwareingenieur tätig. Meine Arbeit umfasst dienstleistungs- und produktorientierte Organisationen sowie mehrere Initiativen: Analyse und Entwurf, Implementierung, Tests, Releases und Abstimmung mit Stakeholdern und im Team. Den Kontrast zwischen diesen Welten schätze ich — Verantwortung innerhalb einer Product Roadmap versus Tempo und Klarheit in der Kundenlieferung — und ich passe mich jeweils schnell an.\n\nMit Enthusiasmus arbeite ich über verschiedene Technologie-Stacks hinweg — Frontends, Backends, APIs, Persistenz und Delivery-Tooling. Neue Sprachen, Frameworks und Randbedingungen interessieren mich; ich wähle, was Wartbarkeit, Performance und Zeitplan trägt, ohne an ein einziges Standard-Toolkit gebunden zu sein.",
+    skillsTitle: 'Technologien & Praktiken',
     stats: {
-      impact: 'Wirkung',
-      focus: 'Fokus',
-      style: 'Stil',
-      impactVal: 'Plattform',
-      focusVal: 'DX + UX',
-      styleVal: 'Pragmatisch',
+      impact: 'Ausbildung',
+      focus: 'Laufbahn',
+      style: 'Einstellung',
+      impactVal: 'B.E., Computer Science & Engineering (2020)',
+      focusVal: 'Softwareingenieur seit Nov. 2020',
+      styleVal: 'Offen für Stack- und Organisationsvielfalt',
     },
   },
   skills: {

@@ -3,9 +3,9 @@
  */
 export const messagesEn = {
   meta: {
-    documentTitle: 'RV · Staff Engineer & Frontend Platform',
+    documentTitle: 'Rishi Vignesh K · Software Engineer',
     documentDescription:
-      'Portfolio — Staff engineer focused on frontend platform, scalable React, and developer experience.',
+      'Portfolio of Rishi Vignesh K — software engineer energized by diverse stacks and organizations, with experience from product teams to client-facing delivery.',
   },
   a11y: {
     mainNav: 'Main navigation',
@@ -39,18 +39,18 @@ export const messagesEn = {
   },
   loading: 'Loading',
   about: {
-    eyebrow: 'Staff engineer · portfolio',
-    title: 'I craft frontends that scale—and teams that ship.',
-    lead: 'Frontend platform, monorepo architecture, and developer experience. Calm systems, sharp execution.',
-    bio: 'I lead technical direction where product velocity and platform health meet. My work sits at the intersection of React architecture, build systems, and the human side of engineering: mentoring, alignment, and standards that stick.',
-    skillsTitle: 'Stack & craft',
+    eyebrow: 'Rishi Vignesh K · Software engineer',
+    title: 'Building reliable software—and energized by new stacks and org contexts.',
+    lead: 'Computer science graduate with hands-on experience across engagements—from greenfield features to production systems. I stay genuinely motivated by variety: different organizations, domains, and tools, and I match architecture to each initiative\'s goals.',
+    bio: "I'm Rishi Vignesh K. I completed my pre-university schooling in 2016, then earned a Bachelor of Engineering in Computer Science and Engineering in 2020—a solid base in algorithms, systems, and disciplined software engineering.\n\nI have been a professional software engineer since November 2020. My work spans service-based and product-based organizations and multiple initiatives: analysis and design, implementation, testing, releases, and follow-up with stakeholders and teammates. I like the contrast between those worlds—ownership inside a product roadmap versus pace and clarity in client delivery—and I learn quickly in each setting.\n\nI'm enthusiastic about working across technology stacks—frontends, backends, APIs, persistence, and delivery tooling. New languages, frameworks, and constraints interest me; I pick what fits maintainability, performance, and timelines without being tied to one default toolkit.",
+    skillsTitle: 'Technologies & practices',
     stats: {
-      impact: 'Impact',
-      focus: 'Focus',
-      style: 'Style',
-      impactVal: 'Platform',
-      focusVal: 'DX + UX',
-      styleVal: 'Pragmatic',
+      impact: 'Education',
+      focus: 'Tenure',
+      style: 'Mindset',
+      impactVal: 'B.E., Computer Science & Engineering (2020)',
+      focusVal: 'Software engineer since Nov 2020',
+      styleVal: 'Eager for stacks & org variety',
     },
   },
   skills: {

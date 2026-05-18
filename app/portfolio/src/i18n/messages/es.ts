@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 export const messagesEs = {
   meta: {
-    documentTitle: 'RV · Staff Engineer y plataforma frontend',
+    documentTitle: 'Rishi Vignesh K · Ingeniero de software',
     documentDescription:
-      'Portafolio — Staff engineer enfocado en plataforma frontend, React a escala y experiencia de desarrollo.',
+      'Portafolio de Rishi Vignesh K — ingeniero de software con energía por stacks y organizaciones diversas, con experiencia desde equipos de producto hasta entrega orientada al cliente.',
   },
   a11y: {
     mainNav: 'Navegación principal',
@@ -38,18 +38,18 @@ export const messagesEs = {
   },
   loading: 'Cargando',
   about: {
-    eyebrow: 'Staff engineer · portafolio',
-    title: 'Construyo frontends que escalan — y equipos que entregan.',
-    lead: 'Plataforma frontend, arquitectura monorepo y experiencia de desarrollo. Sistemas serenos, ejecución precisa.',
-    bio: 'Lidero la dirección técnica donde se cruzan la velocidad de producto y la salud de la plataforma. Mi trabajo está en la intersección de la arquitectura React, los sistemas de build y el lado humano: mentoría, alineación y estándares que perduran.',
-    skillsTitle: 'Stack y oficio',
+    eyebrow: 'Rishi Vignesh K · Ingeniero de software',
+    title: 'Software fiable — y con energía por nuevos stacks y contextos organizativos.',
+    lead: 'Graduado en informática con experiencia práctica en distintos encargos: desde funciones nuevas hasta sistemas en producción. La variedad me motiva de verdad: organizaciones, dominios y herramientas distintas; adapto la arquitectura a los objetivos de cada iniciativa.',
+    bio: "Soy Rishi Vignesh K. Terminé la etapa preuniversitaria en 2016 y me gradué en Ingeniería en Ciencias de la Computación en 2020 — una base sólida en algoritmos, sistemas e ingeniería de software disciplinada.\n\nSoy ingeniero de software profesional desde noviembre de 2020. Mi trabajo abarca organizaciones de servicios y de producto y múltiples iniciativas: análisis y diseño, implementación, pruebas, lanzamientos y seguimiento con interesados y compañeros. Me gusta el contraste entre esos mundos — la propiedad dentro de una hoja de ruta de producto frente al ritmo y la claridad en la entrega al cliente — y aprendo rápido en cada contexto.\n\nMe entusiasma trabajar con distintos stacks tecnológicos: frontends, backends, APIs, persistencia y herramientas de entrega. Los nuevos lenguajes, marcos y restricciones me interesan; elijo lo que encaja con mantenibilidad, rendimiento y plazos sin atarme a un único kit predeterminado.",
+    skillsTitle: 'Tecnologías y prácticas',
     stats: {
-      impact: 'Impacto',
-      focus: 'Enfoque',
-      style: 'Estilo',
-      impactVal: 'Plataforma',
-      focusVal: 'DX + UX',
-      styleVal: 'Pragmático',
+      impact: 'Formación',
+      focus: 'Trayectoria',
+      style: 'Actitud',
+      impactVal: 'Grado en Ing. en Ciencias de la Computación (2020)',
+      focusVal: 'Ingeniero de software desde nov. 2020',
+      styleVal: 'Entusiasmo por stacks y organizaciones variadas',
     },
   },
   skills: {

@@ -3,18 +3,52 @@ import { useI18n } from '../../i18n/I18nProvider';
 import type { MessageKey } from '../../i18n/messageKey';
 import styles from './AboutMe.module.css';
 
-const SKILL_KEYS = [
-  'skills.typescript',
-  'skills.react',
-  'skills.nodejs',
-  'skills.systemDesign',
-  'skills.graphql',
-  'skills.restApis',
-  'skills.cicd',
-  'skills.nxMonorepo',
-  'skills.testing',
-  'skills.performance',
+const SKILLS_WELL_KNOWN_KEYS = [
+  'skills.wellKnown.react',
+  'skills.wellKnown.typescript',
+  'skills.wellKnown.javascript',
+  'skills.wellKnown.reactTestingLibrary',
+  'skills.wellKnown.redux',
+  'skills.wellKnown.html',
+  'skills.wellKnown.css',
+  'skills.wellKnown.git',
 ] as const satisfies readonly MessageKey[];
+
+const SKILLS_WORKED_ON_KEYS = [
+  'skills.workedOn.java',
+  'skills.workedOn.springBoot',
+  'skills.workedOn.lambda',
+  'skills.workedOn.solidjs',
+  'skills.workedOn.dynamodb',
+  'skills.workedOn.cicd',
+  'skills.workedOn.more',
+] as const satisfies readonly MessageKey[];
+
+function SkillTagList({
+  keys,
+  ariaLabel,
+  delayOffset,
+}: {
+  keys: readonly MessageKey[];
+  ariaLabel: MessageKey;
+  delayOffset: number;
+}) {
+  const { t } = useI18n();
+
+  return (
+    <ul className={styles.tags} aria-label={t(ariaLabel)}>
+      {keys.map((key, index) => (
+        <li
+          key={key}
+          className={styles.tag}
+          style={{ animationDelay: `${(delayOffset + index) * 55}ms` }}
+        >
+          {t(key)}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function AboutMe() {
   const { t } = useI18n();
@@ -49,19 +83,37 @@ export default function AboutMe() {
         </div>
       </dl>
 
-      <div className={styles.skills}>
-        <h2 className={styles.skillsTitle}>{t('about.skillsTitle')}</h2>
-        <ul className={styles.tags} aria-label={t('a11y.skillsList')}>
-          {SKILL_KEYS.map((key, index) => (
-            <li
-              key={key}
-              className={styles.tag}
-              style={{ animationDelay: `${index * 55}ms` }}
-            >
-              {t(key)}
-            </li>
-          ))}
-        </ul>
+      <div
+        className={styles.skills}
+        role="region"
+        aria-labelledby="about-skills-title"
+      >
+        <h2 id="about-skills-title" className={styles.skillsTitle}>
+          {t('about.skillsTitle')}
+        </h2>
+        <div className={styles.skillGroup}>
+          <h3
+            id="about-skills-well-known"
+            className={styles.skillGroupTitle}
+          >
+            {t('about.skillsWellKnownHeading')}
+          </h3>
+          <SkillTagList
+            keys={SKILLS_WELL_KNOWN_KEYS}
+            ariaLabel="a11y.skillsWellKnown"
+            delayOffset={0}
+          />
+        </div>
+        <div className={styles.skillGroup}>
+          <h3 id="about-skills-worked-on" className={styles.skillGroupTitle}>
+            {t('about.skillsWorkedOnHeading')}
+          </h3>
+          <SkillTagList
+            keys={SKILLS_WORKED_ON_KEYS}
+            ariaLabel="a11y.skillsWorkedOn"
+            delayOffset={SKILLS_WELL_KNOWN_KEYS.length}
+          />
+        </div>
       </div>
     </section>
   );

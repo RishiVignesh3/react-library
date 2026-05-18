@@ -1,0 +1,85 @@
+name: Build and publish portfolio (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: >
+          Vite base path. Leave empty for GitHub Pages defaults: "/" for a *.github.io
+          user site repo, otherwise "/<this-repo-name>/". Example override: /my-repo/
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: portfolio-github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Resolve site base path
+        id: site_base
+        run: |
+          INPUT="${{ inputs.base_url }}"
+          if [ -n "$INPUT" ]; then
+            case "$INPUT" in
+              /) echo 'path=/' >> "$GITHUB_OUTPUT" ;;
+              /*/) echo "path=$INPUT" >> "$GITHUB_OUTPUT" ;;
+              /*) echo "path=${INPUT}/" >> "$GITHUB_OUTPUT" ;;
+              *)
+                S="${INPUT#/}"
+                S="${S%/}"
+                echo "path=/${S}/" >> "$GITHUB_OUTPUT"
+                ;;
+            esac
+          else
+            NAME="${{ github.event.repository.name }}"
+            case "$NAME" in
+              *.github.io) echo 'path=/' >> "$GITHUB_OUTPUT" ;;
+              *) echo "path=/${NAME}/" >> "$GITHUB_OUTPUT" ;;
+            esac
+          fi
+
+      - uses: actions/configure-pages@v4
+
+      - name: Build portfolio
+        run: npx nx build @org/portfolio
+        env:
+          VITE_BASE_URL: ${{ steps.site_base.outputs.path }}
+
+      - name: SPA fallback for GitHub Pages
+        run: cp app/portfolio/dist/index.html app/portfolio/dist/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/portfolio/dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-dist
+          path: app/portfolio/dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

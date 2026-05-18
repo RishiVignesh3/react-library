@@ -2,8 +2,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+function viteBase(): string {
+  const raw = process.env.VITE_BASE_URL?.trim();
+  if (!raw || raw === '/') return '/';
+  const withLeading = raw.startsWith('/') ? raw : `/${raw}`;
+  return withLeading.endsWith('/') ? withLeading : `${withLeading}/`;
+}
+
 export default defineConfig(() => ({
   root: import.meta.dirname,
+  base: viteBase(),
   cacheDir: '../../node_modules/.vite/app/portfolio',
   server: {
     port: 4200,

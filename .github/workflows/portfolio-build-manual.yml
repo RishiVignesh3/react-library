@@ -25,12 +25,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       - name: Resolve site base path
         id: site_base
@@ -58,7 +62,7 @@ jobs:
       - uses: actions/configure-pages@v4
 
       - name: Build portfolio
-        run: npx nx build @org/portfolio
+        run: pnpm exec nx build @org/portfolio
         env:
           VITE_BASE_URL: ${{ steps.site_base.outputs.path }}
 

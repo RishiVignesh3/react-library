@@ -1,0 +1,140 @@
+/* ─── Design tokens ───────────────────────────────────────────── */
+:root {
+  /* Typography */
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-sans: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.3125rem;
+  --font-size-2xl: 1.625rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-hero: 3.25rem;
+
+  /* Spacing (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Warm dark — mineral + molten copper */
+  --color-bg-deep: #0c0a09;
+  --color-bg: #14110f;
+  --color-surface: rgba(28, 25, 23, 0.72);
+  --color-surface-raised: rgba(41, 37, 36, 0.55);
+  --color-border: rgba(168, 162, 158, 0.12);
+  --color-border-strong: rgba(251, 191, 36, 0.22);
+
+  --color-accent: #fbbf24;
+  --color-accent-bright: #fcd34d;
+  --color-accent-soft: #d97706;
+  --color-accent-glow: rgba(251, 191, 36, 0.35);
+
+  --color-text-primary: #fafaf9;
+  --color-text-secondary: #d6d3d1;
+  --color-text-muted: #a8a29e;
+
+  /* Mesh / glass */
+  --color-mesh-1: rgba(180, 83, 9, 0.16);
+  --color-mesh-2: rgba(217, 119, 6, 0.1);
+  --color-mesh-3: rgba(67, 56, 202, 0.07);
+  --glass-blur: 20px;
+  --glass-surface: rgba(12, 10, 9, 0.55);
+
+  /* Layout */
+  --content-max-width: 68rem;
+  --nav-height: 4rem;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-mid: 420ms;
+  --dur-slow: 900ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms;
+    --dur-mid: 0.01ms;
+    --dur-slow: 0.01ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Reset ──────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+/* Ambient layer: mesh + film grain (single pseudo-element on body via #root wrapper in layout — grain in layout) */
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+/* Focus — visible, on-brand */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(251, 191, 36, 0.28);
+  color: var(--color-text-primary);
+}

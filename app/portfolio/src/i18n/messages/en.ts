@@ -25,7 +25,7 @@ export const messagesEn = {
     about: 'About Me',
     companies: 'Companies & Work',
     contact: 'Contact',
-    random: 'Random Stuff',
+    random: 'Beyond work',
   },
   theme: {
     system: 'Match system',
@@ -180,31 +180,23 @@ export const messagesEn = {
   },
   random: {
     eyebrow: 'Beyond the desk',
-    title: 'Random stuff',
-    lead: "Culture-fit matters. Here's what keeps me curious when I'm away from the terminal.",
+    title: 'Life outside the codebase',
+    lead: 'Movement, miles, playlists, and people—a few ways to recharge between shipping cycles.',
     music: {
       title: 'Music',
-      body: 'Math rock, post-rock, odd meters on repeat.',
+      body: 'Curated playlists for deep work and downtime—indie, acoustic sets, and whatever makes the commute feel shorter.',
     },
-    reading: {
-      title: 'Reading',
-      body: 'Philosophy of Software Design on the nightstand; Staff Engineer already dog-eared.',
+    badminton: {
+      title: 'Badminton',
+      body: 'Weekend courts and friendly rallies—a straightforward reset after long stretches at the keyboard.',
     },
-    keyboards: {
-      title: 'Mechanical keyboards',
-      body: 'Oil Kings, tape mod, coiled cable—guilty as charged.',
+    roadTrips: {
+      title: 'Road trips',
+      body: 'Long drives and short getaways when the schedule allows—clear roads, good audio, and scenery beyond the screen.',
     },
-    photography: {
-      title: 'Street',
-      body: 'X100VI. Film sims beat one-click presets.',
-    },
-    coffee: {
-      title: 'Coffee',
-      body: 'Pour-over at 1:15, then a flat white on weekends.',
-    },
-    tinkering: {
-      title: 'Tinkering',
-      body: 'Home automation, Pi projects, controlled chaos.',
+    friends: {
+      title: 'Time with friends',
+      body: 'Catching up over food, coffee, or nothing in particular—the casual recharge that balances ambitious deadlines.',
     },
   },
 };

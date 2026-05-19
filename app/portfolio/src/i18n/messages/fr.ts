@@ -24,7 +24,7 @@ export const messagesFr = {
     about: 'À propos',
     companies: 'Entreprises & travail',
     contact: 'Contact',
-    random: 'Divers',
+    random: 'Hors travail',
   },
   theme: {
     system: 'Comme le système',
@@ -179,31 +179,23 @@ export const messagesFr = {
   },
   random: {
     eyebrow: 'Hors du bureau',
-    title: 'Divers',
-    lead: 'L’adéquation culturelle compte. Voici ce qui éveille ma curiosité loin du terminal.',
+    title: 'La vie hors du code',
+    lead: 'Mouvement, kilomètres, playlists et proches—des respirations entre les livraisons.',
     music: {
       title: 'Musique',
-      body: 'Math rock, post-rock, mesures impaires en boucle.',
+      body: 'Playlists pour focus et décompression—indie, sessions acoustiques et tout ce qui raccourcit le trajet.',
     },
-    reading: {
-      title: 'Lecture',
-      body: 'A Philosophy of Software Design sur la table de nuit ; Staff Engineer déjà corné.',
+    badminton: {
+      title: 'Badminton',
+      body: 'Courts le week-end et échanges détendus—une coupure nette après de longues sessions clavier.',
     },
-    keyboards: {
-      title: 'Claviers mécaniques',
-      body: 'Oil Kings, tape mod, câble en spirale — coupable.',
+    roadTrips: {
+      title: 'Road trips',
+      body: 'Longs trajets et escapades courtes quand l’agenda le permet—routes fluides, bon son et paysages hors écran.',
     },
-    photography: {
-      title: 'Rue',
-      body: 'X100VI. Les simulations film battent les presets en un clic.',
-    },
-    coffee: {
-      title: 'Café',
-      body: 'Pour-over à 1:15, puis un flat white le week-end.',
-    },
-    tinkering: {
-      title: 'Bricolage',
-      body: 'Domotique, projets Raspberry Pi, chaos maîtrisé.',
+    friends: {
+      title: 'Temps entre amis',
+      body: 'Retrouvailles autour d’un repas, d’un café ou sans programme—le contrepoint décontracté aux deadlines ambitieux.',
     },
   },
 } satisfies Messages;

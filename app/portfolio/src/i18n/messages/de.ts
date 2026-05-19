@@ -24,7 +24,7 @@ export const messagesDe = {
     about: 'Über mich',
     companies: 'Unternehmen & Arbeit',
     contact: 'Kontakt',
-    random: 'Verschiedenes',
+    random: 'Abseits Arbeit',
   },
   theme: {
     system: 'System folgen',
@@ -179,31 +179,23 @@ export const messagesDe = {
   },
   random: {
     eyebrow: 'Abseits des Schreibtischs',
-    title: 'Verschiedenes',
-    lead: 'Kulturfit zählt. Das inspiriert mich, wenn ich nicht am Terminal sitze.',
+    title: 'Leben abseits des Codes',
+    lead: 'Bewegung, Kilometer, Playlists und Menschen—kleine Aufladungen zwischen Lieferzyklen.',
     music: {
       title: 'Musik',
-      body: 'Math Rock, Post-Rock, ungerade Takte auf Repeat.',
+      body: 'Playlists für Fokus und Pause—Indie, Akustik-Sessions und alles, was den Arbeitsweg kürzer wirken lässt.',
     },
-    reading: {
-      title: 'Lesen',
-      body: '«A Philosophy of Software Design» auf dem Nachttisch; «Staff Engineer» schon angeschlagen.',
+    badminton: {
+      title: 'Badminton',
+      body: 'Wochenende am Platz und entspannte Rallyes—ein klarer Cut nach langen Bildschirmphasen.',
     },
-    keyboards: {
-      title: 'Mechanische Tastaturen',
-      body: 'Oil Kings, Tape-Mod, Spiralkabel — ich gestehe.',
+    roadTrips: {
+      title: 'Roadtrips',
+      body: 'Lange Fahrten und kurze Auszeiten, wenn der Kalender mitspielt—freie Straßen, gutes Audio, Landschaft statt Monitor.',
     },
-    photography: {
-      title: 'Street',
-      body: 'X100VI. Film-Simulationen schlagen Ein-Klick-Presets.',
-    },
-    coffee: {
-      title: 'Kaffee',
-      body: 'Pour-over 1:15, am Wochenende dann ein Flat White.',
-    },
-    tinkering: {
-      title: 'Tüfteln',
-      body: 'Hausautomatisierung, Raspberry-Pi-Projekte, kontrolliertes Chaos.',
+    friends: {
+      title: 'Zeit mit Freunden',
+      body: 'Treffen bei Essen, Kaffee oder ohne Agenda—der entspannte Ausgleich zu ambitionierten Deadlines.',
     },
   },
 } satisfies Messages;

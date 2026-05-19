@@ -24,7 +24,7 @@ export const messagesEs = {
     about: 'Sobre mí',
     companies: 'Empresas y trabajo',
     contact: 'Contacto',
-    random: 'Cosas variadas',
+    random: 'Fuera del trabajo',
   },
   theme: {
     system: 'Seguir el sistema',
@@ -179,31 +179,23 @@ export const messagesEs = {
   },
   random: {
     eyebrow: 'Más allá del escritorio',
-    title: 'Cosas variadas',
-    lead: 'El encaje cultural importa. Esto me mantiene curioso cuando no estoy en la terminal.',
+    title: 'Vida fuera del código',
+    lead: 'Movimiento, kilómetros, listas y personas—formas sencillas de recargar entre entregas.',
     music: {
       title: 'Música',
-      body: 'Math rock, post-rock, compases raros en bucle.',
+      body: 'Listas para concentración y descanso—indie, acústicos y lo que acorta el trayecto.',
     },
-    reading: {
-      title: 'Lectura',
-      body: 'A Philosophy of Software Design en la mesilla; Staff Engineer ya bien usado.',
+    badminton: {
+      title: 'Bádminton',
+      body: 'Pistas el fin de semana y puntos sin presión—un corte claro tras largas horas frente al teclado.',
     },
-    keyboards: {
-      title: 'Teclados mecánicos',
-      body: 'Oil Kings, mod de cinta, cable en espiral — culpable.',
+    roadTrips: {
+      title: 'Viajes por carretera',
+      body: 'Trayectos largos y escapadas cortas cuando el calendario lo permite—buena música y paisaje que no sea la pantalla.',
     },
-    photography: {
-      title: 'Calle',
-      body: 'X100VI. Las simulaciones de película ganan a los presets de un clic.',
-    },
-    coffee: {
-      title: 'Café',
-      body: 'Pour-over 1:15, y un flat white los fines de semana.',
-    },
-    tinkering: {
-      title: 'Experimentos',
-      body: 'Domótica, proyectos con Raspberry Pi, caos controlado.',
+    friends: {
+      title: 'Tiempo con amigos',
+      body: 'Quedadas para comer, café o sin plan fijo—la pausa social que equilibra deadlines exigentes.',
     },
   },
 } satisfies Messages;

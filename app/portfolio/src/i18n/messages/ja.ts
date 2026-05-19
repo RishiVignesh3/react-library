@@ -24,7 +24,7 @@ export const messagesJa = {
     about: '自己紹介',
     companies: '企業・仕事',
     contact: '連絡先',
-    random: 'その他',
+    random: 'ワーク以外',
   },
   theme: {
     system: 'システムに合わせる',
@@ -179,31 +179,23 @@ export const messagesJa = {
   },
   random: {
     eyebrow: 'デスクの外',
-    title: 'その他',
-    lead: 'カルチャーフィットは大切です。ターミナルから離れたときの好奇心の源です。',
+    title: 'コードの向こう側',
+    lead: '動くこと、距離、プレイリスト、人—リリースの合間に息を入れる習慣。',
     music: {
       title: '音楽',
-      body: 'マスロック、ポストロック、変拍子をリピート。',
+      body: '集中用とオフ用のプレイリスト—インディ、アコースティック、通勤が軽くなる曲たち。',
     },
-    reading: {
-      title: '読書',
-      body: '枕元は A Philosophy of Software Design。Staff Engineer はすでに角が折れ気味。',
+    badminton: {
+      title: 'バドミントン',
+      body: '週末コートで気楽にラリー—長時間キーボードのあとのシンプルなリセット。',
     },
-    keyboards: {
-      title: 'メカニカルキーボード',
-      body: 'Oil Kings、テープモッド、コイルケーブル——お約束。',
+    roadTrips: {
+      title: 'ドライブ・小旅行',
+      body: '日程が許すときの長めのドライブや短い脱出—良い音楽とスクリーン以外の景色。',
     },
-    photography: {
-      title: 'ストリート',
-      body: 'X100VI。フィルムシミュはワンクリックプリセットに勝つ。',
-    },
-    coffee: {
-      title: 'コーヒー',
-      body: '1:15 のハンドドリップ、週末はフラットホワイト。',
-    },
-    tinkering: {
-      title: 'いじり',
-      body: 'ホームオートメーション、Raspberry Pi、制御されたカオス。',
+    friends: {
+      title: '友人との時間',
+      body: '食事やカフェ、予定なしの雑談—タイトな締切とのバランスをとるリラックス。',
     },
   },
 } satisfies Messages;

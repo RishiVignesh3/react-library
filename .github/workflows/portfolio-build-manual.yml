@@ -1,4 +1,5 @@
 name: Build and publish portfolio (manual)
+# One-time repo setup: Settings → Pages → Build and deployment → Source: GitHub Actions
 
 on:
   workflow_dispatch:
@@ -56,8 +57,6 @@ jobs:
               *) echo "path=/${NAME}/" >> "$GITHUB_OUTPUT" ;;
             esac
           fi
-
-      - uses: actions/configure-pages@v4
 
       - name: Build portfolio
         run: pnpm exec nx build @org/portfolio

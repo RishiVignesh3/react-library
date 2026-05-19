@@ -83,28 +83,90 @@ export const messagesEn = {
     title: 'Companies & work',
     lead: 'A track record of platform bets, product delivery, and turning complexity into something teams can actually maintain.',
     present: 'Present',
-    acme: {
-      company: 'Acme Corp',
-      role: 'Staff Engineer',
+    productLabel: 'Product',
+    cognizant: {
+      company: 'Cognizant Technology Solutions',
+      role: 'Programmer Analyst',
+      periodStart: '2020',
+      periodEnd: '2022',
+      product: 'USB Corporate & Services',
+      bullets: {
+        scope:
+          'Financial-services programs for corporate clients—delivery at scale with accessibility and reliability expectations typical of regulated environments.',
+        engineering:
+          'React for user-focused interfaces; Node.js for services. Production defect resolution, scoped UI enhancements, and steady iteration with the team.',
+        observability:
+          'Kibana for log search, dashboards, and monitoring—shortening triage and strengthening operational visibility.',
+      },
+    },
+    anthology: {
+      company: 'Anthology Inc',
+      role: 'Software Engineer',
       periodStart: '2022',
-      description:
-        'Leading frontend platform initiatives across 20+ product squads. Architected the monorepo migration to Nx, cutting CI time dramatically and enabling incremental builds at scale.',
+      periodEnd: '2024',
+      product: 'Blackboard Learn LMS',
+      bullets: {
+        mission:
+          'Blackboard Learn modernizes instructor training: accessible learning experiences on demand—React and Angular for responsive, user-centric interfaces; Java and Spring Boot for reliable backend services.',
+        features:
+          'Partnered with product to design and ship advanced LMS areas—course creation, assessments, grading workflows, and knowledge checks.',
+        react:
+          'React: delivered new features and reusable components with clear patterns and a high bar for code quality.',
+        migration:
+          'Angular to React: led and contributed to migrations—refactoring with disciplined feature equivalence.',
+        reviews:
+          'Code reviews to strengthen quality, consistency, and shared engineering standards.',
+      },
+    },
+    trimble: {
+      company: 'Trimble',
+      role: 'Software Engineer',
+      periodStart: '2024',
+      product: 'Trimble Connect',
+      bullets: {
+        mission:
+          'Trimble Connect is a cloud collaboration hub for design and construction: models, drawings, documents, and project data in one workspace so office, field, and partner teams review work, track issues, and stay aligned from design through delivery.',
+        delivery:
+          'Individual contributor: production bug fixes and product features owned end to end—from clarification through release—often delivered single-handedly.',
+        stackUpgrades:
+          'Modernized the client stack with staged rollouts: React Router v5 to v6 and React 16 to 18, reducing risk to high-traffic workflows.',
+        testing:
+          'Replaced Enzyme with React Testing Library for tests that reflect real usage and are easier to sustain.',
+        webComponents:
+          'Built SolidJS-powered web components so shared UI can be authored once and embedded across host applications in a framework-agnostic way.',
+        reviews:
+          'Peer code reviews to uphold quality, consistency, and performance before merge.',
+      },
     },
     buildit: {
       company: 'BuildIt Inc',
       role: 'Senior Frontend Engineer',
       periodStart: '2019',
       periodEnd: '2022',
-      description:
-        'Built a design system adopted by eight product teams. Introduced module federation to support a deliberate micro-frontend rollout without sacrificing coherence.',
+      product: 'Shared component platform',
+      bullets: {
+        designSystem:
+          'Scaled a design system adopted across eight product teams—tokens, documentation, and governance that kept UX coherent.',
+        architecture:
+          'Module federation to roll out micro-frontends deliberately without fragmenting the customer experience.',
+        collaboration:
+          'Partnered with design and platform engineering to align releases, adoption, and long-term maintainability.',
+      },
     },
     startup: {
       company: 'StartupXYZ',
       role: 'Frontend Engineer',
       periodStart: '2017',
       periodEnd: '2019',
-      description:
-        'Early engineer on a B2B SaaS product. Led the React migration, implemented OAuth 2.0 PKCE, and set patterns the codebase still follows today.',
+      product: 'B2B SaaS',
+      bullets: {
+        foundation:
+          'Early engineer on a revenue product: ownership of critical flows from sketch to production.',
+        modernization:
+          'Led a React migration and introduced OAuth 2.0 PKCE—raising security and maintainability for the next growth phase.',
+        craft:
+          'Established patterns for components, data loading, and testing that outlasted individual ship cycles.',
+      },
     },
   },
   contact: {
@@ -114,6 +176,7 @@ export const messagesEn = {
     github: 'GitHub profile',
     linkedin: 'LinkedIn profile',
     email: 'Email',
+    phone: 'Phone',
   },
   random: {
     eyebrow: 'Beyond the desk',

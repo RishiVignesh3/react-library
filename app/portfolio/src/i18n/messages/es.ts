@@ -82,28 +82,90 @@ export const messagesEs = {
     title: 'Empresas y trabajo',
     lead: 'Apuestas de plataforma, entrega de producto y complejidad convertida en algo que los equipos pueden mantener de verdad.',
     present: 'Actualidad',
-    acme: {
-      company: 'Acme Corp',
-      role: 'Staff Engineer',
+    productLabel: 'Producto',
+    cognizant: {
+      company: 'Cognizant Technology Solutions',
+      role: 'Programmer Analyst',
+      periodStart: '2020',
+      periodEnd: '2022',
+      product: 'USB Corporate & Services',
+      bullets: {
+        scope:
+          'Programas financieros para clientes corporativos—entrega con expectativas de entornos regulados y escalables.',
+        engineering:
+          'React para interfaces centradas en el usuario; Node.js para servicios. Correcciones en producción, mejoras UI acotadas e iteración continua con el equipo.',
+        observability:
+          'Kibana para búsqueda de logs, paneles y monitoreo—triage más rápido y mayor visibilidad operativa.',
+      },
+    },
+    anthology: {
+      company: 'Anthology Inc',
+      role: 'Software Engineer',
       periodStart: '2022',
-      description:
-        'Liderazgo de iniciativas de plataforma frontend en más de 20 equipos de producto. Arquitectura de la migración monorepo a Nx, con CI mucho más rápida y builds incrementales a escala.',
+      periodEnd: '2024',
+      product: 'Blackboard Learn LMS',
+      bullets: {
+        mission:
+          'Blackboard Learn renueva la formación de instructores: experiencias accesibles bajo demanda—React y Angular para interfaces centradas en el usuario; Java y Spring Boot para backends fiables.',
+        features:
+          'Con producto: diseño y entrega de capacidades LMS avanzadas—creación de cursos, evaluaciones, calificación y knowledge checks.',
+        react:
+          'React: nuevas funcionalidades y componentes reutilizables con patrones claros y alto nivel de calidad.',
+        migration:
+          'Angular a React: liderazgo y participación en migraciones—refactor con paridad funcional rigurosa.',
+        reviews:
+          'Revisiones de código para reforzar calidad, consistencia y estándares de ingeniería.',
+      },
+    },
+    trimble: {
+      company: 'Trimble',
+      role: 'Software Engineer',
+      periodStart: '2024',
+      product: 'Trimble Connect',
+      bullets: {
+        mission:
+          'Trimble Connect es colaboración en la nube para diseño y construcción: modelos, planos, documentos y datos de proyecto en un solo espacio para equipos de oficina, obra y socios—revisiones, tareas y alineación desde diseño hasta entrega.',
+        delivery:
+          'Contribuidor individual: corrección de bugs en producción y funcionalidades de punta a punta—aclaración hasta release—a menudo de forma autónoma.',
+        stackUpgrades:
+          'Modernización del cliente por fases: React Router v5 a v6 y React 16 a 18, priorizando flujos de alto tráfico.',
+        testing:
+          'Sustitución de Enzyme por React Testing Library—pruebas más cercanas al uso real y más mantenibles.',
+        webComponents:
+          'Web components con SolidJS para empaquetar UI una vez e incrustarla de forma agnóstica al framework.',
+        reviews:
+          'Revisiones de código para calidad, consistencia y rendimiento antes del merge.',
+      },
     },
     buildit: {
       company: 'BuildIt Inc',
       role: 'Senior Frontend Engineer',
       periodStart: '2019',
       periodEnd: '2022',
-      description:
-        'Diseño de sistema adoptado por ocho equipos de producto. Module federation para un despliegue deliberado de micro-frontends sin perder coherencia.',
+      product: 'Plataforma de componentes compartidos',
+      bullets: {
+        designSystem:
+          'Design system adoptado por ocho equipos—tokens, documentación y gobernanza para UX coherente.',
+        architecture:
+          'Module federation para micro-frontends sin romper la experiencia del cliente.',
+        collaboration:
+          'Colaboración con diseño e ingeniería de plataforma en releases, adopción y mantenibilidad.',
+      },
     },
     startup: {
       company: 'StartupXYZ',
       role: 'Frontend Engineer',
       periodStart: '2017',
       periodEnd: '2019',
-      description:
-        'Ingeniero temprano en un SaaS B2B. Migración a React, OAuth 2.0 PKCE y patrones que el código sigue hoy.',
+      product: 'SaaS B2B',
+      bullets: {
+        foundation:
+          'Ingeniero temprano en el producto de ingresos: ownership de flujos críticos de diseño a producción.',
+        modernization:
+          'Lideré migración a React e integración OAuth 2.0 PKCE—seguridad y mantenibilidad para crecer.',
+        craft:
+          'Patrones de componentes, carga de datos y pruebas que perduraron más allá de cada release.',
+      },
     },
   },
   contact: {
@@ -113,6 +175,7 @@ export const messagesEs = {
     github: 'Perfil de GitHub',
     linkedin: 'Perfil de LinkedIn',
     email: 'Correo',
+    phone: 'Teléfono',
   },
   random: {
     eyebrow: 'Más allá del escritorio',

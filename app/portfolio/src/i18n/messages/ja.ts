@@ -82,28 +82,90 @@ export const messagesJa = {
     title: '企業・仕事',
     lead: 'プラットフォームへの打ち手、プロダクト開発、チームが長く保てるように複雑さを整えること。',
     present: '現在',
-    acme: {
-      company: 'Acme Corp',
-      role: 'スタッフエンジニア',
-      periodStart: '2022',
-      description:
-        '20 以上のプロダクトチーム向けフロントエンドプラットフォーム施策をリード。Nx へのモノレポ移行を設計し、CI 時間の大幅短縮と大規模なインクリメンタルビルドを実現。',
+    productLabel: 'プロダクト',
+    cognizant: {
+      company: 'コグニザント・テクノロジー・ソリューションズ',
+      role: 'プログラマーアナリスト',
+      periodStart: '2020年',
+      periodEnd: '2022年',
+      product: 'USB Corporate & Services',
+      bullets: {
+        scope:
+          '法人向け金融プログラムの提供—規制・スケール要件が高い環境での信頼性。',
+        engineering:
+          'ユーザー中心 UI は React、サービス層は Node.js。本番不具合対応、スコープを絞った UI 改善、チームでの継続的なイテレーション。',
+        observability:
+          'Kibana でログ検索・ダッシュボード・監視—トリアージ短縮と運用の可視性向上。',
+      },
+    },
+    anthology: {
+      company: 'Anthology Inc',
+      role: 'ソフトウェアエンジニア',
+      periodStart: '2022年',
+      periodEnd: '2024年',
+      product: 'Blackboard Learn LMS',
+      bullets: {
+        mission:
+          'Blackboard Learn はインストラクター研修を刷新。いつでも利用できるアクセシブルな学習—React と Angular でユーザー中心 UI、Java と Spring Boot で信頼性の高いバックエンド。',
+        features:
+          'プロダクトと連携し LMS の高度な領域を設計・実装—コース作成、評価、採点、ナレッジチェック。',
+        react:
+          'React で新機能と再利用コンポーネントを届け、明確なパターンと高いコード品質を維持。',
+        migration:
+          'Angular から React への移行をリード・参画—リファクタで機能パリティを厳密に維持。',
+        reviews:
+          'コードレビューで品質・一貫性・共通のエンジニアリング基準を強化。',
+      },
+    },
+    trimble: {
+      company: 'Trimble',
+      role: 'ソフトウェアエンジニア',
+      periodStart: '2024年',
+      product: 'Trimble Connect',
+      bullets: {
+        mission:
+          'Trimble Connect は設計・建設向けのクラウドコラボレーション。モデル、図面、ドキュメント、プロジェクトデータを一つのワークスペースに集約し、オフィス・現場・パートナーがレビューから引き渡しまで同期します。',
+        delivery:
+          '個人コントリビューターとして本番の不具合修正と機能を要件整理からリリースまで一気通貫で担当。多くは単独でデリバリー。',
+        stackUpgrades:
+          'React Router v5→v6、React 16→18 への段階的アップグレードで高トラフィックの業務フローを保護。',
+        testing:
+          'Enzyme から React Testing Library へ移行し、実利用に近いテストと保守性を向上。',
+        webComponents:
+          'SolidJS で Web Components を構築し、UI を一度作ればフレームワーク非依存でホストアプリへ組み込み可能に。',
+        reviews:
+          'コードレビューで品質・一貫性・パフォーマンスをマージ前に担保。',
+      },
     },
     buildit: {
       company: 'BuildIt Inc',
       role: 'シニアフロントエンドエンジニア',
       periodStart: '2019',
       periodEnd: '2022',
-      description:
-        '8 チームに採用されたデザインシステムを構築。一貫性を損なわずマイクロフロントを展開するためのモジュール連携を導入。',
+      product: '共有コンポーネント基盤',
+      bullets: {
+        designSystem:
+          '8 チームが採用したデザインシステム—トークン、ドキュメント、UX のガバナンス。',
+        architecture:
+          'モジュール連携でマイクロフロントを展開しつつ顧客体験を維持。',
+        collaboration:
+          'デザイン・基盤エンジニアリングと連携しリリース、普及、長期的な保守性を担保。',
+      },
     },
     startup: {
       company: 'StartupXYZ',
       role: 'フロントエンドエンジニア',
       periodStart: '2017',
       periodEnd: '2019',
-      description:
-        'B2B SaaS の初期メンバー。React 移行、OAuth 2.0 PKCE 実装、いまもコードベースに残るパターン設計。',
+      product: 'B2B SaaS',
+      bullets: {
+        foundation:
+          '収益プロダクトの初期メンバー。設計から本番までクリティカルなフローをリード。',
+        modernization:
+          'React 移行と OAuth 2.0 PKCE 導入を主導—セキュリティと保守性を成長に向けて強化。',
+        craft:
+          'コンポーネント、データ取得、テストのパターンをリリースを超えて定着。',
+      },
     },
   },
   contact: {
@@ -113,6 +175,7 @@ export const messagesJa = {
     github: 'GitHub プロフィール',
     linkedin: 'LinkedIn プロフィール',
     email: 'メール',
+    phone: '電話',
   },
   random: {
     eyebrow: 'デスクの外',

@@ -82,28 +82,90 @@ export const messagesDe = {
     title: 'Unternehmen & Arbeit',
     lead: 'Plattform-Entscheidungen, Produktdelivery und Komplexität so gebändigt, dass Teams sie wirklich pflegen können.',
     present: 'Heute',
-    acme: {
-      company: 'Acme Corp',
-      role: 'Staff Engineer',
+    productLabel: 'Produkt',
+    cognizant: {
+      company: 'Cognizant Technology Solutions',
+      role: 'Programmer Analyst',
+      periodStart: '2020',
+      periodEnd: '2022',
+      product: 'USB Corporate & Services',
+      bullets: {
+        scope:
+          'Finanzdienstleistungsprogramme für Großkunden—Auslieferung unter den Erwartungen regulierter, skalierender Umgebungen.',
+        engineering:
+          'React für nutzerzentrierte Oberflächen; Node.js für Services. Produktionsfixes, gezielte UI-Erweiterungen und kontinuierliche Iteration mit dem Team.',
+        observability:
+          'Kibana für Log-Suche, Dashboards und Monitoring—kürzere Triage und bessere operative Transparenz.',
+      },
+    },
+    anthology: {
+      company: 'Anthology Inc',
+      role: 'Software Engineer',
       periodStart: '2022',
-      description:
-        'Leitung von Frontend-Plattform-Initiativen für 20+ Produktteams. Architektur der Monorepo-Migration zu Nx, deutlich kürzere CI-Zeiten und inkrementelle Builds im großen Maßstab.',
+      periodEnd: '2024',
+      product: 'Blackboard Learn LMS',
+      bullets: {
+        mission:
+          'Blackboard Learn modernisiert Dozentenschulungen: zugängliche Lernangebote nach Bedarf—React und Angular für klare, nutzerzentrierte Oberflächen; Java und Spring Boot für zuverlässige Backend-Services.',
+        features:
+          'Mit Produkt Konzeption und Umsetzung fortgeschrittener LMS-Bereiche: Kurserstellung, Assessments, Bewertungslogik und Knowledge Checks.',
+        react:
+          'React: neue Features und wiederverwendbare Komponenten mit klaren Mustern und hohem Qualitätsanspruch.',
+        migration:
+          'Angular nach React: Führung und Mitarbeit an Migrationen—Refactoring bei strikter Feature-Parität.',
+        reviews:
+          'Code Reviews für Qualität, Einheitlichkeit und gemeinsame Engineering-Standards.',
+      },
+    },
+    trimble: {
+      company: 'Trimble',
+      role: 'Software Engineer',
+      periodStart: '2024',
+      product: 'Trimble Connect',
+      bullets: {
+        mission:
+          'Trimble Connect ist eine Cloud-Kollaborationsplattform für Planung und Bau: Modelle, Pläne, Dokumente und Projektdaten an einem Ort—für Büro, Baustelle und Partner, um Reviews, Aufgaben und Abstimmung von Entwurf bis Übergabe zu verbinden.',
+        delivery:
+          'Einzelner Beitragender: Bugfixes in Produktion und Features end-to-end—von der Klärung bis zum Release—oft eigenverantwortlich umgesetzt.',
+        stackUpgrades:
+          'Client-Stack modernisiert mit gestaffelten Releases: React Router v5 nach v6 und React 16 nach 18, mit Fokus auf stabile Kern-Workflows.',
+        testing:
+          'Enzyme durch React Testing Library ersetzt—tests näher an realer Nutzung und besser wartbar.',
+        webComponents:
+          'Mit SolidJS umgesetzte Web Components, damit geteilte UI einmal gebaut und frameworkagnostisch in Host-Apps eingebettet werden kann.',
+        reviews:
+          'Code Reviews für Qualität, Einheitlichkeit und Performance vor dem Merge.',
+      },
     },
     buildit: {
       company: 'BuildIt Inc',
       role: 'Senior Frontend Engineer',
       periodStart: '2019',
       periodEnd: '2022',
-      description:
-        'Aufbau eines Design Systems, das von acht Produktteams übernommen wurde. Einführung von Module Federation für einen gezielten Micro-Frontend-Rollout ohne Kohärenzverlust.',
+      product: 'Gemeinsame Komponentenplattform',
+      bullets: {
+        designSystem:
+          'Design System für acht Produktteams—Tokens, Dokumentation und Governance für einheitliche UX.',
+        architecture:
+          'Module Federation für einen kontrollierten Micro-Frontend-Rollout ohne Brüche in der Customer Journey.',
+        collaboration:
+          'Enge Zusammenarbeit mit Design und Plattform-Engineering zu Releases, Adoption und langfristiger Wartbarkeit.',
+      },
     },
     startup: {
       company: 'StartupXYZ',
       role: 'Frontend Engineer',
       periodStart: '2017',
       periodEnd: '2019',
-      description:
-        'Früher Engineer in einem B2B-SaaS-Produkt. React-Migration, OAuth-2.0-PKCE und Architektur-Muster, die der Codebase noch heute zugrunde liegen.',
+      product: 'B2B-SaaS',
+      bullets: {
+        foundation:
+          'Früher Engineer am Umsatzprodukt: Verantwortung für Kernflows vom Konzept bis Production.',
+        modernization:
+          'Leitung der React-Migration und Einführung von OAuth-2.0-PKCE—Sicherheit und Wartbarkeit für Wachstum.',
+        craft:
+          'Muster für Komponenten, Datenladevorgänge und Tests über einzelne Release-Zyklen hinaus.',
+      },
     },
   },
   contact: {
@@ -113,6 +175,7 @@ export const messagesDe = {
     github: 'GitHub-Profil',
     linkedin: 'LinkedIn-Profil',
     email: 'E-Mail',
+    phone: 'Telefon',
   },
   random: {
     eyebrow: 'Abseits des Schreibtischs',

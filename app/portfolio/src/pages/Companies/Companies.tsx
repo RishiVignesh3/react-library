@@ -7,7 +7,8 @@ interface WorkRow {
   readonly id: string;
   readonly companyKey: MessageKey;
   readonly roleKey: MessageKey;
-  readonly descriptionKey: MessageKey;
+  readonly productKey: MessageKey;
+  readonly bulletKeys: readonly MessageKey[];
   readonly period: PeriodSpec;
 }
 
@@ -17,37 +18,58 @@ type PeriodSpec =
 
 const WORK: readonly WorkRow[] = [
   {
-    id: 'company-a',
-    companyKey: 'companies.acme.company',
-    roleKey: 'companies.acme.role',
-    descriptionKey: 'companies.acme.description',
+    id: 'company-trimble',
+    companyKey: 'companies.trimble.company',
+    roleKey: 'companies.trimble.role',
+    productKey: 'companies.trimble.product',
+    bulletKeys: [
+      'companies.trimble.bullets.mission',
+      'companies.trimble.bullets.delivery',
+      'companies.trimble.bullets.stackUpgrades',
+      'companies.trimble.bullets.testing',
+      'companies.trimble.bullets.webComponents',
+      'companies.trimble.bullets.reviews',
+    ],
     period: {
       kind: 'toPresent',
-      startKey: 'companies.acme.periodStart',
+      startKey: 'companies.trimble.periodStart',
     },
   },
   {
-    id: 'company-b',
-    companyKey: 'companies.buildit.company',
-    roleKey: 'companies.buildit.role',
-    descriptionKey: 'companies.buildit.description',
+    id: 'company-anthology',
+    companyKey: 'companies.anthology.company',
+    roleKey: 'companies.anthology.role',
+    productKey: 'companies.anthology.product',
+    bulletKeys: [
+      'companies.anthology.bullets.mission',
+      'companies.anthology.bullets.features',
+      'companies.anthology.bullets.react',
+      'companies.anthology.bullets.migration',
+      'companies.anthology.bullets.reviews',
+    ],
     period: {
       kind: 'range',
-      startKey: 'companies.buildit.periodStart',
-      endKey: 'companies.buildit.periodEnd',
+      startKey: 'companies.anthology.periodStart',
+      endKey: 'companies.anthology.periodEnd',
     },
-  },
+  },  
   {
-    id: 'company-c',
-    companyKey: 'companies.startup.company',
-    roleKey: 'companies.startup.role',
-    descriptionKey: 'companies.startup.description',
+    id: 'company-cognizant',
+    companyKey: 'companies.cognizant.company',
+    roleKey: 'companies.cognizant.role',
+    productKey: 'companies.cognizant.product',
+    bulletKeys: [
+      'companies.cognizant.bullets.scope',
+      'companies.cognizant.bullets.engineering',
+      'companies.cognizant.bullets.observability',
+    ],
     period: {
       kind: 'range',
-      startKey: 'companies.startup.periodStart',
-      endKey: 'companies.startup.periodEnd',
+      startKey: 'companies.cognizant.periodStart',
+      endKey: 'companies.cognizant.periodEnd',
     },
   },
+
 ] as const;
 
 export default function Companies() {
@@ -70,27 +92,43 @@ export default function Companies() {
       />
 
       <ol className={styles.timeline} aria-label={t('a11y.workHistory')}>
-        {WORK.map(({ id, companyKey, roleKey, descriptionKey, period }, index) => (
-          <li
-            key={id}
-            className={styles.entry}
-            style={{ animationDelay: `${index * 80}ms` }}
-          >
-            <div className={styles.card}>
-              <div className={styles.cardGlow} aria-hidden="true" />
-              <div className={styles.cardInner}>
-                <div className={styles.meta}>
-                  <div className={styles.titles}>
-                    <span className={styles.company}>{t(companyKey)}</span>
-                    <span className={styles.role}>{t(roleKey)}</span>
+        {WORK.map(
+          ({ id, companyKey, roleKey, productKey, bulletKeys, period }, index) => (
+            <li
+              key={id}
+              className={styles.entry}
+              style={{ animationDelay: `${index * 80}ms` }}
+            >
+              <div className={styles.card}>
+                <div className={styles.cardGlow} aria-hidden="true" />
+                <div className={styles.cardInner}>
+                  <div className={styles.meta}>
+                    <div className={styles.titles}>
+                      <span className={styles.company}>{t(companyKey)}</span>
+                      <span className={styles.role}>{t(roleKey)}</span>
+                    </div>
+                    <span className={styles.period}>{formatPeriod(period)}</span>
                   </div>
-                  <span className={styles.period}>{formatPeriod(period)}</span>
+                  <div className={styles.detail}>
+                    <div className={styles.productBlock}>
+                      <span className={styles.productLabel}>
+                        {t('companies.productLabel')}
+                      </span>
+                      <span className={styles.productName}>{t(productKey)}</span>
+                    </div>
+                    <ul className={styles.bullets}>
+                      {bulletKeys.map((key) => (
+                        <li key={key} className={styles.bullet}>
+                          {t(key)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <p className={styles.description}>{t(descriptionKey)}</p>
               </div>
-            </div>
-          </li>
-        ))}
+            </li>
+          ),
+        )}
       </ol>
     </section>
   );

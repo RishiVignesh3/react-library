@@ -45,27 +45,45 @@ function IconMail() {
   );
 }
 
+function IconPhone() {
+  return (
+    <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"
+      />
+    </svg>
+  );
+}
+
 const CONTACT_LINKS: readonly ContactLink[] = [
   {
     id: 'github',
-    href: 'https://github.com/rvignes',
-    display: 'github.com/rvignes',
+    href: 'https://github.com/RishiVignesh3',
+    display: 'github.com/RishiVignesh3',
     ariaKey: 'contact.github',
     Icon: IconGithub,
   },
   {
     id: 'linkedin',
-    href: 'https://linkedin.com/in/rvignes',
-    display: 'linkedin.com/in/rvignes',
+    href: 'https://www.linkedin.com/in/rishivigneshk/',
+    display: 'linkedin.com/in/rishivigneshk',
     ariaKey: 'contact.linkedin',
     Icon: IconLinkedIn,
   },
   {
     id: 'email',
-    href: 'mailto:hello@rvignes.dev',
-    display: 'hello@rvignes.dev',
+    href: 'mailto:rishivignesh33@gmail.com',
+    display: 'rishivignesh33@gmail.com',
     ariaKey: 'contact.email',
     Icon: IconMail,
+  },
+  {
+    id: 'phone',
+    href: 'tel:+918883203456',
+    display: '+91 88832 03456',
+    ariaKey: 'contact.phone',
+    Icon: IconPhone,
   },
 ] as const;
 
@@ -83,7 +101,8 @@ export default function Contact() {
 
       <ul className={styles.links} aria-label={t('a11y.contactLinks')}>
         {CONTACT_LINKS.map(({ id, href, display, ariaKey, Icon }) => {
-          const external = !href.startsWith('mailto:');
+          const external =
+            href.startsWith('http://') || href.startsWith('https://');
           const aria = `${t(ariaKey)} · ${display}`;
           return (
             <li key={id}>
